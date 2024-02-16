@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://pn5uuemspuex"]
+[gd_scene load_steps=5 format=3 uid="uid://pn5uuemspuex"]
 
 [ext_resource type="Texture2D" uid="uid://c3yfxjgikap35" path="res://assets/towerDefense_tilesheet.png" id="1_a7cdt"]
 
@@ -374,6 +374,8 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/3 = SubResource("TileSetAtlasSource_0iflc")
 
+[sub_resource type="Curve2D" id="Curve2D_d0ef0"]
+
 [node name="Ennemies" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -386,3 +388,10 @@ layer_0/tile_data = PackedInt32Array(0, 262147, 5, 262144, 262147, 5, 327680, 26
 position = Vector2(832, 512)
 offset = Vector2(-32, 0)
 zoom = Vector2(1.565, 1.565)
+
+[node name="PathSpawner" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_d0ef0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
