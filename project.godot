@@ -11,15 +11,18 @@ config_version=5
 [application]
 
 config/name="keikosquad"
-run/main_scene="res://ennemies/ennemies.tscn"
+run/main_scene="res://moving-character/moving-character.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+run/size/mode=2
 
 [display]
 
-window/size/viewport_width=2304
-window/size/viewport_height=1296
-window/size/mode=2
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/size/initial_position_type=0
+window/size/borderless=true
 window/stretch/mode="viewport"
 
 [editor]
