@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 run/size/mode=2
 
+[autoload]
+
+global="*res://global_script.gd"
+
 [display]
 
 window/size/viewport_width=1920

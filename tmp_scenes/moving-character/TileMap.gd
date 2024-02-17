@@ -1,9 +1,14 @@
 extends TileMap
 
-var _tiles_array   = []
-var _selected_tile = 0
-var tile_map_id    = 5
-var _previous_hovered_cell = Vector2i(0, 0)
+var _sprites_array: Array[Variant]   = []
+var _selected_tile: int              = 0
+var _tile_map_id: int                = 5
+var _grey_tile_map_id: int           = 6
+var _previous_hovered_cell: Vector2i = Vector2i(0, 0)
+var _exclude_tiles: Array[Vector2i]  = []
+var _item_selected_in_list: bool     = false
+var _was_cleared: bool               = false
+var _placed_tiles: Array[Vector2i] = []
 
 
 #@onready var tileSelectMat: ShaderMaterial = load("res://placing/TileSelectMaterial.material")
@@ -11,23 +16,28 @@ var _previous_hovered_cell = Vector2i(0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Blacklisted tiles
+	_exclude_tiles.append(Vector2i(0, 2))
+	_exclude_tiles.append(Vector2i(1, 2))
+	_exclude_tiles.append(Vector2i(2, 2))
+	_exclude_tiles.append(Vector2i(1, 1))
+	_exclude_tiles.append(Vector2i(2, 1))
+	_exclude_tiles.append(Vector2i(3, 1))
+	
+	
+	global.on_change.connect(test)
+	global._set_value(10)
+
 	# campfire
-	_tiles_array.append({
-		"name": "Campfire",
-		"properties": [
-			{"name": "base", "tile_id": Vector2i(6, 9)},
-			{"name": "top", "tile_id": Vector2i(6, 8)}
-		]
+	_sprites_array.append({
+		"name": "Egg",
+		"sprite": $"../Egg",
 	})
 
 	# rock
-	_tiles_array.append({
+	_sprites_array.append({
 		"name": "Rock",
-		"properties": [
-			{"name": "base", "tile_id": Vector2i(4, 14)},
-			{"name": "center", "tile_id": Vector2i(4, 13)},
-			{"name": "top", "tile_id": Vector2i(4, 12)}
-		]
+		"sprite": $"../Rock",
 	})
 
 	print("MAIS C'EST PAS ABORDABLE")
@@ -42,39 +52,66 @@ func _ready():
 #	pass
 
 
+func test(value):
+	print("testttttttt", value)
+	
+
 func _unhandled_input(event):
+	if !_item_selected_in_list:
+		return
+
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var clicked_cell = local_to_map(event.position)
-		var tile         = _tiles_array[_selected_tile]
-		var properties   = tile["properties"]
+		var clicked_cell: Vector2i = local_to_map(event.position)
+		var clicked_tile: Vector2i = get_cell_atlas_coords(0, clicked_cell)
 
-		var cpt = 0
-		for prop in properties:
-			var position = Vector2i(clicked_cell.x - cpt, clicked_cell.y - cpt)
-			var tile_id  = prop["tile_id"]
+		if !_is_tile_in_blacklist(clicked_tile):
+			var sprite = _sprites_array[_selected_tile]["sprite"]
+			#duplicate the sprite
+			var new_sprite = sprite.duplicate()
+			if(sprite != null and _placed_tiles.find(clicked_cell) == -1):
+				new_sprite.position = event.position
+				add_child(new_sprite)
+				_placed_tiles.append(clicked_cell)
+				_clear_selected_tile()
 
-			set_cell(2, position, tile_map_id, tile_id)
-			cpt += 1
 
 	if event is InputEventMouseMotion:
-		var hovered_cell = local_to_map(event.position)
+		var hovered_cell: Vector2i = local_to_map(event.position)
+		var hover_tile: Vector2i   = get_cell_atlas_coords(0, hovered_cell)
 
-		var hover_tile = Vector2i(1, 1)
-		set_cell(1, hovered_cell, tile_map_id, hover_tile)
+		if !_is_tile_in_blacklist(hover_tile):
+			set_cell(1, hovered_cell, _grey_tile_map_id, hover_tile)
 
 		if _previous_hovered_cell != hovered_cell:
 			set_cell(1, _previous_hovered_cell, -1, Vector2i(0, 0))
 			_previous_hovered_cell = hovered_cell
+			_was_cleared = false
+
+		if _was_cleared == true and _previous_hovered_cell == hovered_cell:
+			_clear_selected_tile()
+
+
+func _clear_selected_tile():
+	set_cell(1, _previous_hovered_cell, -1, Vector2i(0, 0))
+	_was_cleared = true
+	# deselect all other items
+	$"../ItemList".deselect_all()
+	_item_selected_in_list = false
+
+
+func _is_tile_in_blacklist(tile: Vector2i) -> bool:
+	return _exclude_tiles.find(tile) != -1
 
 
 func _on_item_list_item_selected(index):
 	_selected_tile = index
+	_item_selected_in_list = true
 
 
 func _on_item_list_ready():
 	var item_list = $"../ItemList"
 	if(item_list != null):
-		for tile in _tiles_array:
-			item_list.add_item(tile["name"])
+		for sprite in _sprites_array:
+			item_list.add_item(sprite["name"])
 	
 
