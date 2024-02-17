@@ -10,15 +10,15 @@ func _ready():
 
 func _on_item_list_ready():
 	print("list_ready")
-	for i in range(len(global.material_array)):
+	for i in range(len(global.stock_array)):
 		item_list.add_item(" ")
 
-	global.set_stock_amount("wood", 0) # initial update
+	global.add_stock_amount("plank", 0) # initial update
 
 func _on_button_pressed():
-	global.add_stock_amount("wood", 5)
+	global.add_stock_amount("plank", 5)
 
-func _on_stock_amount_changed(name, value):
+func _on_stock_amount_changed():
 	print("on_stock")
 	# update display
 	for i in range(item_list.get_item_count()):
