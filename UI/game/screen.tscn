@@ -1,0 +1,243 @@
+[gd_scene load_steps=14 format=3 uid="uid://5k4icjjnsaql"]
+
+[ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_v0nts"]
+[ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_uwljc"]
+[ext_resource type="Script" path="res://tmp_scenes/moving-character/CharacterBody2D.gd" id="3_mlo1i"]
+[ext_resource type="Texture2D" uid="uid://d3yy5pcbbxtl2" path="res://assets/stickman.png" id="4_bmje7"]
+[ext_resource type="Script" path="res://tmp_scenes/placing/scripts/menu.gd" id="5_wpl51"]
+[ext_resource type="Texture2D" uid="uid://8xfqsm5jxq0v" path="res://assets/workshop.png" id="6_nee8d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hngpw"]
+texture = ExtResource("1_v0nts")
+texture_region_size = Vector2i(256, 128)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 1
+0:0/0/probability = 0.2
+0:0/0/terrains_peering_bit/right_corner = 1
+0:0/0/terrains_peering_bit/bottom_right_side = 1
+0:0/0/terrains_peering_bit/bottom_corner = 1
+0:0/0/terrains_peering_bit/bottom_left_side = 1
+0:0/0/terrains_peering_bit/left_corner = 1
+0:0/0/terrains_peering_bit/top_left_side = 1
+0:0/0/terrains_peering_bit/top_corner = 1
+0:0/0/terrains_peering_bit/top_right_side = 1
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 1
+1:0/0/probability = 0.2
+1:0/0/terrains_peering_bit/right_corner = 1
+1:0/0/terrains_peering_bit/bottom_right_side = 1
+1:0/0/terrains_peering_bit/bottom_corner = 1
+1:0/0/terrains_peering_bit/bottom_left_side = 1
+1:0/0/terrains_peering_bit/left_corner = 1
+1:0/0/terrains_peering_bit/top_left_side = 1
+1:0/0/terrains_peering_bit/top_corner = 1
+1:0/0/terrains_peering_bit/top_right_side = 1
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 1
+2:0/0/probability = 0.2
+2:0/0/terrains_peering_bit/right_corner = 1
+2:0/0/terrains_peering_bit/bottom_right_side = 1
+2:0/0/terrains_peering_bit/bottom_corner = 1
+2:0/0/terrains_peering_bit/bottom_left_side = 1
+2:0/0/terrains_peering_bit/left_corner = 1
+2:0/0/terrains_peering_bit/top_left_side = 1
+2:0/0/terrains_peering_bit/top_corner = 1
+2:0/0/terrains_peering_bit/top_right_side = 1
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 1
+3:0/0/probability = 0.2
+3:0/0/terrains_peering_bit/right_corner = 1
+3:0/0/terrains_peering_bit/bottom_right_side = 1
+3:0/0/terrains_peering_bit/bottom_corner = 1
+3:0/0/terrains_peering_bit/bottom_left_side = 1
+3:0/0/terrains_peering_bit/left_corner = 1
+3:0/0/terrains_peering_bit/top_left_side = 1
+3:0/0/terrains_peering_bit/top_corner = 1
+3:0/0/terrains_peering_bit/top_right_side = 1
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 1
+0:1/0/probability = 0.2
+0:1/0/terrains_peering_bit/right_corner = 1
+0:1/0/terrains_peering_bit/bottom_right_side = 1
+0:1/0/terrains_peering_bit/bottom_corner = 1
+0:1/0/terrains_peering_bit/bottom_left_side = 1
+0:1/0/terrains_peering_bit/left_corner = 1
+0:1/0/terrains_peering_bit/top_left_side = 1
+0:1/0/terrains_peering_bit/top_corner = 1
+0:1/0/terrains_peering_bit/top_right_side = 1
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_corner = 0
+1:1/0/terrains_peering_bit/bottom_right_side = 0
+1:1/0/terrains_peering_bit/top_right_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_right_side = 0
+2:1/0/terrains_peering_bit/bottom_corner = 0
+2:1/0/terrains_peering_bit/bottom_left_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_left_side = 0
+3:1/0/terrains_peering_bit/left_corner = 0
+3:1/0/terrains_peering_bit/top_left_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/top_left_side = 0
+0:2/0/terrains_peering_bit/top_right_side = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/bottom_right_side = 0
+1:2/0/terrains_peering_bit/top_left_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/bottom_left_side = 0
+2:2/0/terrains_peering_bit/top_right_side = 0
+3:2/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ntcci"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(246, 128)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.992157, 0.776471, 0.537255, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.658824, 0.780392, 0.32549, 1)
+sources/5 = SubResource("TileSetAtlasSource_hngpw")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sa3v0"]
+height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqr7o"]
+size = Vector2(379.473, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srcbp"]
+size = Vector2(1920, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j0f4"]
+size = Vector2(40, 1080)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6n5ll"]
+font_size = 61
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_ntcci")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(65551, 65541, 0, 131086, 5, 1, 196621, 65541, 0, 262156, 65541, 0, 327691, 5, 1, 393226, 5, 0, 458761, 196613, 0, 524296, 5, 1, -524281, 5, 1, -458745, 5, 1, -458744, 5, 1, -393208, 5, 1, -393207, 65541, 0, -327671, 5, 1, -327670, 131077, 0, -262134, 5, 1, -262133, 131077, 0, -196597, 196613, 0, -196596, 65541, 0, -131060, 5, 1, -131059, 65541, 0, -65523, 65541, 0, -65522, 5, 0, 14, 131077, 0, 15, 131077, 0, 65535, 65541, 0, -65536, 131077, 0, -131071, 5, 0, -196606, 5, 0, -262141, 131077, 0, -327676, 196613, 0, -393211, 131077, 0, -458746, 131077, 0, 524295, 131077, 0, 524294, 65541, 0, 458758, 5, 0, 458757, 196613, 0, 393221, 5, 0, 393220, 131077, 0, 327684, 131077, 0, 327683, 196613, 0, 262147, 131077, 0, 262146, 131077, 0, 196610, 65541, 0, 196609, 5, 0, 131073, 5, 1, 131072, 5, 1, 65536, 5, 1, 131071, 131077, 0, -393210, 196613, 0, -327675, 5, 1, -262140, 5, 0, -196605, 5, 1, -131070, 5, 1, -65535, 65541, 0, 0, 5, 1, 1, 65541, 0, -65534, 5, 1, -131069, 131077, 0, -196604, 5, 1, -262139, 196613, 0, -327674, 5, 0, -393209, 5, 1, -327672, 5, 1, -262137, 5, 1, -196602, 5, 1, -131067, 5, 1, -65532, 5, 1, -65533, 131077, 0, 2, 131077, 0, 65537, 5, 1, -131068, 131077, 0, -196603, 5, 1, -262138, 5, 0, -327673, 5, 1, -262136, 65541, 0, -196601, 65541, 0, -131066, 196613, 0, -65531, 131077, 0, 4, 5, 1, 65539, 65541, 0, 131074, 65541, 0, 3, 65541, 0, 65538, 65541, 0, -262135, 5, 1, -196600, 65541, 0, -131065, 5, 1, -65530, 5, 0, 5, 5, 0, 65540, 65541, 0, 131075, 5, 1, 196611, 5, 1, 131076, 196613, 0, 65541, 5, 1, 6, 65541, 0, -65529, 5, 1, -196599, 65541, 0, -131064, 196613, 0, -196598, 65541, 0, -131063, 65541, 0, -65528, 65541, 0, 7, 131077, 0, 65542, 196613, 0, 131078, 131077, 0, 196613, 5, 0, 262148, 65541, 0, 131077, 196613, 0, 196612, 5, 0, 262149, 131077, 0, 65550, 196613, 0, 131085, 131077, 0, 65549, 196613, 0, 13, 131077, 0, 196620, 5, 0, 131084, 196613, 0, 65548, 5, 0, 12, 196613, 0, -65524, 5, 1, 262155, 131077, 0, 196619, 5, 1, 131083, 65541, 0, 65547, 131077, 0, 11, 65541, 0, -65525, 5, 0, -131061, 131077, 0, 327690, 65541, 0, 262154, 5, 0, 196618, 5, 1, 131082, 5, 1, 65546, 196613, 0, 10, 196613, 0, -65526, 196613, 0, -131062, 196613, 0, 393225, 5, 0, 327689, 196613, 0, 262153, 5, 1, 196617, 5, 1, 131081, 5, 1, 65545, 131077, 0, 9, 65541, 0, -65527, 65541, 0, 458760, 5, 0, 393224, 5, 0, 327688, 65541, 0, 262152, 65541, 0, 196616, 5, 1, 131080, 5, 0, 65544, 65541, 0, 8, 65541, 0, 458759, 131077, 0, 393223, 5, 1, 327687, 5, 1, 262151, 196613, 0, 196615, 196613, 0, 131079, 5, 1, 65543, 5, 1, 393222, 196613, 0, 327686, 196613, 0, 262150, 196613, 0, 196614, 65541, 0, 327685, 65541, 0)
+script = ExtResource("2_uwljc")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="TileMap"]
+z_index = 1
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
+script = ExtResource("3_mlo1i")
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/CharacterBody2D"]
+position = Vector2(0, -20)
+scale = Vector2(0.148936, 0.148936)
+texture = ExtResource("4_bmje7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/CharacterBody2D"]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_sa3v0")
+debug_color = Color(0.952941, 0, 0.54902, 0.419608)
+
+[node name="Workshop" type="Area2D" parent="."]
+position = Vector2(771.243, 975.024)
+rotation = -0.471239
+scale = Vector2(0.975, 0.975)
+
+[node name="Sprite2D" type="Sprite2D" parent="Workshop"]
+position = Vector2(159.372, 162.675)
+rotation = 0.471239
+texture = ExtResource("6_nee8d")
+
+[node name="Area2D7" type="StaticBody2D" parent="Workshop"]
+position = Vector2(697.734, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Area2D7"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_eqr7o")
+
+[node name="Area2D8" type="StaticBody2D" parent="Workshop"]
+position = Vector2(-36.015, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Area2D8"]
+shape = SubResource("RectangleShape2D_eqr7o")
+
+[node name="Area" type="Node2D" parent="."]
+
+[node name="Area2D" type="StaticBody2D" parent="Area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D"]
+position = Vector2(961.122, -17.9594)
+shape = SubResource("RectangleShape2D_srcbp")
+
+[node name="Area2D2" type="StaticBody2D" parent="Area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D2"]
+position = Vector2(960, 1100)
+shape = SubResource("RectangleShape2D_srcbp")
+
+[node name="Area2D3" type="StaticBody2D" parent="Area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D3"]
+position = Vector2(-20, 540)
+shape = SubResource("RectangleShape2D_2j0f4")
+
+[node name="Area2D4" type="StaticBody2D" parent="Area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D4"]
+position = Vector2(1556, 536)
+shape = SubResource("RectangleShape2D_2j0f4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1576.71
+offset_top = 0.0578232
+offset_right = 1896.71
+offset_bottom = 1080.06
+
+[node name="ItemList" type="ItemList" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.84
+anchor_right = -4.84
+offset_left = 1548.8
+offset_right = 1891.8
+offset_bottom = 1083.0
+script = ExtResource("5_wpl51")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.22
+anchor_top = -0.002
+anchor_right = -0.22
+anchor_bottom = -0.002
+offset_left = 131.287
+offset_top = 12.1155
+offset_right = 329.287
+offset_bottom = 96.1155
+text = "Menu"
+label_settings = SubResource("LabelSettings_6n5ll")
+horizontal_alignment = 1
+
+[connection signal="item_selected" from="Control/ItemList" to="Control/ItemList" method="_on_item_selected"]
