@@ -23,10 +23,6 @@ func _ready():
 	_exclude_tiles.append(Vector2i(1, 1))
 	_exclude_tiles.append(Vector2i(2, 1))
 	_exclude_tiles.append(Vector2i(3, 1))
-	
-	
-	global.on_change.connect(test)
-	global._set_value(10)
 
 	# campfire
 	_sprites_array.append({
@@ -43,22 +39,9 @@ func _ready():
 	print("MAIS C'EST PAS ABORDABLE")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-#func _draw():
-#	pass
-
-
-func test(value):
-	print("testttttttt", value)
-	
-
 func _unhandled_input(event):
-	if !_item_selected_in_list:
-		return
+	#if !_item_selected_in_list:
+	#	return
 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var clicked_cell: Vector2i = local_to_map(event.position)
@@ -67,6 +50,7 @@ func _unhandled_input(event):
 		if !_is_tile_in_blacklist(clicked_tile):
 			var sprite = _sprites_array[_selected_tile]["sprite"]
 			#duplicate the sprite
+			return
 			var new_sprite = sprite.duplicate()
 			if(sprite != null and _placed_tiles.find(clicked_cell) == -1):
 				new_sprite.position = event.position
@@ -113,5 +97,12 @@ func _on_item_list_ready():
 	if(item_list != null):
 		for sprite in _sprites_array:
 			item_list.add_item(sprite["name"])
-	
+
+
+func _on_buyzone_ready():
+	var item_list = $"../Buyzone/Buy/ItemList"
+	print(item_list)
+	if(item_list != null):
+		for sprite in _sprites_array:
+			item_list.add_item(sprite["name"])
 
