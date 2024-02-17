@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+signal use_dropper(infos)
+signal use_forge(infos)
+signal use_scrapper(infos)
+
 const SPEED = 250
 var is_dropping: bool = false
 var is_holding : bool = false
@@ -19,25 +23,43 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up","ui_down")
-	direction = _convert_to_isometric(direction)
+	if direction.x != 0 && direction.y != 0:
+		direction = Vector2(2 * direction.x,1 * direction.y)
 	direction = direction.normalized()
 	velocity = direction * SPEED
+	# animations
 	if direction.x > 0:
 		$AnimatedSprite2d.flip_h = false
 		if not is_holding:
 			$AnimatedSprite2d.play("walking")
+		else:
+			$AnimatedSprite2d.play("grabbing_walking")
 	if direction.x < 0:
 		$AnimatedSprite2d.flip_h = true
 		if not is_holding:
 			$AnimatedSprite2d.play("walking")
-	if direction.x == 0:
-		if not is_holding:
-			$AnimatedSprite2d.play("idle")
 		else:
-			$AnimatedSprite2d.play("grabbing")
+			$AnimatedSprite2d.play("grabbing_walking")
+	if direction.x == 0:
+		if direction.y != 0:
+			if not is_holding:
+				$AnimatedSprite2d.play("walking")
+			else:
+				$AnimatedSprite2d.play("grabbing_walking")
+		else:
+			if not is_holding:
+				$AnimatedSprite2d.play("idle")
+			else:
+				$AnimatedSprite2d.play("grabbing")
 	move_and_slide()
+	
 	if is_holding:
-		held_item.position = position + get_parent().position + _convert_to_isometric(Vector2(0,-70))
+		var offset
+		if not $AnimatedSprite2d.flip_h: 
+			offset = _convert_to_isometric(Vector2(0,-80))
+		else:
+			offset = _convert_to_isometric(Vector2(-80,0))
+		held_item.position = position + get_parent().position + offset
 		
 func _on_interaction_zone_ready():
 	print("interaction zone ready")
@@ -60,7 +82,7 @@ func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, lo
 			has_item_near = false
 
 func _input(ev):
-	if Input.is_action_just_pressed("pickup"):
+	if Input.is_action_just_pressed("interact"):
 		if is_holding :
 			is_holding = false
 			held_item = null
