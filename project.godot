@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="keikosquad"
-run/main_scene="res://ennemies.tscn"
+run/main_scene="res://ennemies/ennemies.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,9 +19,8 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=2304
 window/size/viewport_height=1296
-window/size/window_width_override=1152
-window/size/window_height_override=648
-window/stretch/aspect="expand"
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [editor]
 
