@@ -3,7 +3,6 @@ extends Node2D
 
 class_name WorldObject
 @export var type: String = ""
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
