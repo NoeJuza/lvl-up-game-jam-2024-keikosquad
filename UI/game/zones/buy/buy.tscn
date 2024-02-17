@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt1qyx7baab5v"]
+[gd_scene load_steps=4 format=3 uid="uid://bt1qyx7baab5v"]
+
+[ext_resource type="Script" path="res://UI/game/zones/buy/item.gd" id="1_tjfdo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwotc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -24,6 +26,7 @@ offset_top = 153.0
 offset_right = 1891.8
 offset_bottom = 820.0
 theme_override_styles/focus = SubResource("StyleBoxFlat_vwotc")
+script = ExtResource("1_tjfdo")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -39,3 +42,5 @@ offset_bottom = 132.102
 text = "Achat"
 label_settings = SubResource("LabelSettings_uk1j5")
 horizontal_alignment = 1
+
+[connection signal="item_selected" from="ItemList" to="ItemList" method="_on_item_selected"]

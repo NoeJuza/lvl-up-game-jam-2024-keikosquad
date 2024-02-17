@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://5k4icjjnsaql"]
+[gd_scene load_steps=17 format=3 uid="uid://ddx78u5px3vb6"]
 
 [ext_resource type="Texture2D" uid="uid://b050t70wcy1oy" path="res://assets/tilemap_v1_grayscale.png" id="1_jlnrb"]
 [ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_v0nts"]
-[ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_uwljc"]
 [ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_bq8ws"]
+[ext_resource type="Script" path="res://UI/game/zones/buy/buy_zone.gd" id="3_eprsy"]
 [ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="5_bp1rj"]
 [ext_resource type="PackedScene" uid="uid://bt1qyx7baab5v" path="res://UI/game/zones/buy/buy.tscn" id="6_xn2it"]
 [ext_resource type="PackedScene" uid="uid://b484gfw36707u" path="res://players/player2/Walls.tscn" id="7_15a31"]
@@ -145,6 +145,23 @@ texture_region_size = Vector2i(256, 128)
 3:2/0 = 0
 1:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ucw4"]
+texture = ExtResource("1_jlnrb")
+texture_region_size = Vector2i(256, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+1:3/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_ntcci"]
 tile_shape = 1
 tile_layout = 5
@@ -155,6 +172,7 @@ terrain_set_0/terrain_0/color = Color(0.992157, 0.776471, 0.537255, 1)
 terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.658824, 0.780392, 0.32549, 1)
 sources/5 = SubResource("TileSetAtlasSource_hngpw")
+sources/6 = SubResource("TileSetAtlasSource_8ucw4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqr7o"]
 size = Vector2(379.473, 36)
@@ -174,7 +192,7 @@ layer_1/tile_data = PackedInt32Array()
 layer_2/name = "Object"
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
-script = ExtResource("2_uwljc")
+script = ExtResource("3_eprsy")
 
 [node name="player2" parent="map_tilemap" instance=ExtResource("3_bq8ws")]
 position = Vector2(960, 540)
@@ -183,6 +201,9 @@ position = Vector2(960, 540)
 
 [node name="ui_buy" parent="." instance=ExtResource("6_xn2it")]
 z_index = 1
+
+[node name="Egg" type="Sprite2D" parent="ui_buy"]
+texture = ExtResource("8_mrc44")
 
 [node name="ui_stock" parent="." instance=ExtResource("7_fxv2p")]
 z_index = 1
@@ -231,4 +252,4 @@ rotation = -1.5708
 scale = Vector2(0.92825, 0.92825)
 texture = ExtResource("10_ygujo")
 
-[connection signal="ready" from="Buyzone" to="TileMap" method="_on_buyzone_ready"]
+[connection signal="ready" from="ui_buy" to="map_tilemap" method="_on_ui_buy_ready"]
