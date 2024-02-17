@@ -6,22 +6,22 @@ var item_list: ItemList = null
 func _ready():
 	item_list = $"../ItemList"
 	# https://www.nightquestgames.com/godot-4-basics-how-to-use-signals-for-node-communication-with-examples/
-	global.material_amount_changed.connect(_on_material_amount_changed)
+	global.stock_amount_changed.connect(_on_stock_amount_changed)
 
 func _on_item_list_ready():
 	print("list_ready")
 	for i in range(len(global.material_array)):
 		item_list.add_item(" ")
 
-	global.set_material_amount("wood", 0) # initial update
+	global.set_stock_amount("wood", 0) # initial update
 
 func _on_button_pressed():
-	global.add_material_amount("wood", 5)
+	global.add_stock_amount("wood", 5)
 
-func _on_material_amount_changed(name, value):
-	print("on_material")
+func _on_stock_amount_changed(name, value):
+	print("on_stock")
 	# update display
 	for i in range(item_list.get_item_count()):
-		var material = global.material_array[i]
-		item_list.set_item_text(i, str(material["name"]) + " : " + str(material["amount"]))
+		var stock = global.stock_array[i]
+		item_list.set_item_text(i, str(stock["name"]) + " : " + str(stock["amount"]))
 

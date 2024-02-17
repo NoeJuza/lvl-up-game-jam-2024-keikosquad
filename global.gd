@@ -1,29 +1,24 @@
 extends Node
 
-signal material_amount_changed(name, value)
+signal stock_amount_changed()
 signal item_selected_buyzone(index)
 
-var material_array = [
-	{"name": "egg", "amount": 2},
-	{"name": "wood", "amount": 0}
+var stock_array = [
+	{"name": "frog", "amount": 2},
+	{"name": "plank", "amount": 0}
 ]
 
-# Setter amount
-func set_material_amount(name, value):
-	material_array[material_array.find(name)]["amount"] += value
-	emit_signal("material_amount_changed", name, value)
-
-# Add amount (TO KEEP)
-func add_material_amount(name, value):
-	material_array[material_array.find(name)]["amount"] += value
-	emit_signal("material_amount_changed", name, value)
+# Add amount
+func add_stock_amount(name, value):
+	stock_array[stock_array.find(name)]["amount"] += value
+	emit_signal("stock_amount_changed")
+	
+# Getter pour la valeur "amount" dans le tableau stock_array
+func get_stock_amount(name):
+	return stock_array[stock_array.find(name)]["amount"]
 	
 # Getter amount
 func emit_item_selected_buyzone(index):
 	emit_signal("item_selected_buyzone", index)
 
-
-# Getter pour la valeur "amount" dans le tableau material_array
-func get_material_amount(name):
-	return material_array[material_array.find(name)]["amount"]
 
