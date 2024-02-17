@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://c61tm2xdybiqv"]
+[gd_scene load_steps=3 format=3 uid="uid://c61tm2xdybiqv"]
+
+[ext_resource type="Script" path="res://UI/game/zones/stock/stock.gd" id="1_laoj3"]
+[ext_resource type="Script" path="res://tmp_scenes/placing/scripts/menu.gd" id="1_rslph"]
 
 [node name="Ressources" type="Node2D"]
+script = ExtResource("1_laoj3")
+
+[node name="Buy" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1577.0
+offset_right = 1897.0
+offset_bottom = 157.0
+
+[node name="ItemList" type="ItemList" parent="Buy"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.84
+anchor_right = -4.84
+offset_left = 1548.8
+offset_top = 820.0
+offset_right = 1891.8
+offset_bottom = 1080.0
+item_count = 1
+item_0/text = ""
+script = ExtResource("1_rslph")
+
+[connection signal="item_clicked" from="Buy/ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="item_selected" from="Buy/ItemList" to="Buy/ItemList" method="_on_item_selected"]
+[connection signal="ready" from="Buy/ItemList" to="." method="_on_item_list_ready"]

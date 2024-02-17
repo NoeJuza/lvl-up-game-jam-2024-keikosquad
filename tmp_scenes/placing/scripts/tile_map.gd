@@ -3,7 +3,6 @@ extends TileMap
 var _tiles_array = []
 var _selected_tile = 0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# campfire
