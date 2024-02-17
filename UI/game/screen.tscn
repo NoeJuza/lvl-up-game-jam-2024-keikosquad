@@ -1,11 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://5k4icjjnsaql"]
+[gd_scene load_steps=17 format=3 uid="uid://5k4icjjnsaql"]
 
 [ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_v0nts"]
 [ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_uwljc"]
 [ext_resource type="Script" path="res://tmp_scenes/moving-character/CharacterBody2D.gd" id="3_mlo1i"]
 [ext_resource type="Texture2D" uid="uid://d3yy5pcbbxtl2" path="res://assets/stickman.png" id="4_bmje7"]
-[ext_resource type="Script" path="res://tmp_scenes/placing/scripts/menu.gd" id="5_wpl51"]
-[ext_resource type="Texture2D" uid="uid://8xfqsm5jxq0v" path="res://assets/workshop.png" id="6_nee8d"]
+[ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="5_bp1rj"]
+[ext_resource type="PackedScene" uid="uid://bt1qyx7baab5v" path="res://UI/game/zones/buy/buy.tscn" id="6_xn2it"]
+[ext_resource type="PackedScene" uid="uid://c61tm2xdybiqv" path="res://UI/game/zones/stock/stock.tscn" id="7_fxv2p"]
+[ext_resource type="Texture2D" uid="uid://b3s0hl6ohu7fu" path="res://assets/ws_forge.png" id="8_j6pup"]
+[ext_resource type="Texture2D" uid="uid://de78ugwtmldx5" path="res://assets/ws_scrapper.png" id="9_r28st"]
+[ext_resource type="Texture2D" uid="uid://qbe2v27r5h2k" path="res://assets/ws_dropper.jpg" id="10_ygujo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hngpw"]
 texture = ExtResource("1_v0nts")
@@ -73,35 +77,68 @@ texture_region_size = Vector2i(256, 128)
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
-1:1/0/terrains_peering_bit/right_corner = 0
+1:1/0/terrains_peering_bit/right_corner = 1
 1:1/0/terrains_peering_bit/bottom_right_side = 0
+1:1/0/terrains_peering_bit/bottom_corner = 1
+1:1/0/terrains_peering_bit/bottom_left_side = 1
+1:1/0/terrains_peering_bit/left_corner = 1
+1:1/0/terrains_peering_bit/top_left_side = 1
+1:1/0/terrains_peering_bit/top_corner = 1
 1:1/0/terrains_peering_bit/top_right_side = 0
 2:1/0 = 0
 2:1/0/terrain_set = 0
 2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/right_corner = 1
 2:1/0/terrains_peering_bit/bottom_right_side = 0
-2:1/0/terrains_peering_bit/bottom_corner = 0
+2:1/0/terrains_peering_bit/bottom_corner = 1
 2:1/0/terrains_peering_bit/bottom_left_side = 0
+2:1/0/terrains_peering_bit/left_corner = 1
+2:1/0/terrains_peering_bit/top_left_side = 1
+2:1/0/terrains_peering_bit/top_corner = 1
+2:1/0/terrains_peering_bit/top_right_side = 1
 3:1/0 = 0
 3:1/0/terrain_set = 0
 3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/right_corner = 1
+3:1/0/terrains_peering_bit/bottom_right_side = 1
+3:1/0/terrains_peering_bit/bottom_corner = 1
 3:1/0/terrains_peering_bit/bottom_left_side = 0
-3:1/0/terrains_peering_bit/left_corner = 0
+3:1/0/terrains_peering_bit/left_corner = 1
 3:1/0/terrains_peering_bit/top_left_side = 0
+3:1/0/terrains_peering_bit/top_corner = 1
+3:1/0/terrains_peering_bit/top_right_side = 1
 0:2/0 = 0
 0:2/0/terrain_set = 0
 0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_corner = 1
+0:2/0/terrains_peering_bit/bottom_right_side = 1
+0:2/0/terrains_peering_bit/bottom_corner = 1
+0:2/0/terrains_peering_bit/bottom_left_side = 1
+0:2/0/terrains_peering_bit/left_corner = 1
 0:2/0/terrains_peering_bit/top_left_side = 0
+0:2/0/terrains_peering_bit/top_corner = 1
 0:2/0/terrains_peering_bit/top_right_side = 0
 1:2/0 = 0
 1:2/0/terrain_set = 0
 1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/right_corner = 1
 1:2/0/terrains_peering_bit/bottom_right_side = 0
+1:2/0/terrains_peering_bit/bottom_corner = 1
+1:2/0/terrains_peering_bit/bottom_left_side = 1
+1:2/0/terrains_peering_bit/left_corner = 1
 1:2/0/terrains_peering_bit/top_left_side = 0
+1:2/0/terrains_peering_bit/top_corner = 1
+1:2/0/terrains_peering_bit/top_right_side = 1
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/right_corner = 1
+2:2/0/terrains_peering_bit/bottom_right_side = 1
+2:2/0/terrains_peering_bit/bottom_corner = 1
 2:2/0/terrains_peering_bit/bottom_left_side = 0
+2:2/0/terrains_peering_bit/left_corner = 1
+2:2/0/terrains_peering_bit/top_left_side = 1
+2:2/0/terrains_peering_bit/top_corner = 1
 2:2/0/terrains_peering_bit/top_right_side = 0
 3:2/0 = 0
 1:3/0 = 0
@@ -129,9 +166,6 @@ size = Vector2(1920, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2j0f4"]
 size = Vector2(40, 1080)
 
-[sub_resource type="LabelSettings" id="LabelSettings_6n5ll"]
-font_size = 61
-
 [node name="Main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -139,12 +173,12 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_ntcci")
 format = 2
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(65551, 65541, 0, 131086, 5, 1, 196621, 65541, 0, 262156, 65541, 0, 327691, 5, 1, 393226, 5, 0, 458761, 196613, 0, 524296, 5, 1, -524281, 5, 1, -458745, 5, 1, -458744, 5, 1, -393208, 5, 1, -393207, 65541, 0, -327671, 5, 1, -327670, 131077, 0, -262134, 5, 1, -262133, 131077, 0, -196597, 196613, 0, -196596, 65541, 0, -131060, 5, 1, -131059, 65541, 0, -65523, 65541, 0, -65522, 5, 0, 14, 131077, 0, 15, 131077, 0, 65535, 65541, 0, -65536, 131077, 0, -131071, 5, 0, -196606, 5, 0, -262141, 131077, 0, -327676, 196613, 0, -393211, 131077, 0, -458746, 131077, 0, 524295, 131077, 0, 524294, 65541, 0, 458758, 5, 0, 458757, 196613, 0, 393221, 5, 0, 393220, 131077, 0, 327684, 131077, 0, 327683, 196613, 0, 262147, 131077, 0, 262146, 131077, 0, 196610, 65541, 0, 196609, 5, 0, 131073, 5, 1, 131072, 5, 1, 65536, 5, 1, 131071, 131077, 0, -393210, 196613, 0, -327675, 5, 1, -262140, 5, 0, -196605, 5, 1, -131070, 5, 1, -65535, 65541, 0, 0, 5, 1, 1, 65541, 0, -65534, 5, 1, -131069, 131077, 0, -196604, 5, 1, -262139, 196613, 0, -327674, 5, 0, -393209, 5, 1, -327672, 5, 1, -262137, 5, 1, -196602, 5, 1, -131067, 5, 1, -65532, 5, 1, -65533, 131077, 0, 2, 131077, 0, 65537, 5, 1, -131068, 131077, 0, -196603, 5, 1, -262138, 5, 0, -327673, 5, 1, -262136, 65541, 0, -196601, 65541, 0, -131066, 196613, 0, -65531, 131077, 0, 4, 5, 1, 65539, 65541, 0, 131074, 65541, 0, 3, 65541, 0, 65538, 65541, 0, -262135, 5, 1, -196600, 65541, 0, -131065, 5, 1, -65530, 5, 0, 5, 5, 0, 65540, 65541, 0, 131075, 5, 1, 196611, 5, 1, 131076, 196613, 0, 65541, 5, 1, 6, 65541, 0, -65529, 5, 1, -196599, 65541, 0, -131064, 196613, 0, -196598, 65541, 0, -131063, 65541, 0, -65528, 65541, 0, 7, 131077, 0, 65542, 196613, 0, 131078, 131077, 0, 196613, 5, 0, 262148, 65541, 0, 131077, 196613, 0, 196612, 5, 0, 262149, 131077, 0, 65550, 196613, 0, 131085, 131077, 0, 65549, 196613, 0, 13, 131077, 0, 196620, 5, 0, 131084, 196613, 0, 65548, 5, 0, 12, 196613, 0, -65524, 5, 1, 262155, 131077, 0, 196619, 5, 1, 131083, 65541, 0, 65547, 131077, 0, 11, 65541, 0, -65525, 5, 0, -131061, 131077, 0, 327690, 65541, 0, 262154, 5, 0, 196618, 5, 1, 131082, 5, 1, 65546, 196613, 0, 10, 196613, 0, -65526, 196613, 0, -131062, 196613, 0, 393225, 5, 0, 327689, 196613, 0, 262153, 5, 1, 196617, 5, 1, 131081, 5, 1, 65545, 131077, 0, 9, 65541, 0, -65527, 65541, 0, 458760, 5, 0, 393224, 5, 0, 327688, 65541, 0, 262152, 65541, 0, 196616, 5, 1, 131080, 5, 0, 65544, 65541, 0, 8, 65541, 0, 458759, 131077, 0, 393223, 5, 1, 327687, 5, 1, 262151, 196613, 0, 196615, 196613, 0, 131079, 5, 1, 65543, 5, 1, 393222, 196613, 0, 327686, 196613, 0, 262150, 196613, 0, 196614, 65541, 0, 327685, 65541, 0)
+layer_0/tile_data = PackedInt32Array(65551, 65541, 0, 131086, 5, 1, 196621, 65541, 0, 262156, 65541, 0, 327691, 5, 1, 393226, 5, 0, 458761, 196613, 0, 524296, 5, 1, -524281, 5, 1, -458745, 5, 0, -458744, 65541, 0, -393208, 5, 1, -393207, 5, 1, -327671, 196613, 0, -327670, 131077, 0, -262134, 5, 1, -262133, 131077, 0, -196597, 196613, 0, -196596, 65541, 0, -131060, 5, 1, -131059, 65541, 0, -65523, 65541, 0, -65522, 5, 0, 14, 131077, 0, 15, 131077, 0, -65536, 131077, 0, -131071, 5, 0, -196606, 5, 0, -262141, 131077, 0, -327676, 196613, 0, -393211, 131077, 0, -458746, 131077, 0, 524295, 131077, 0, 524294, 65541, 0, 458758, 5, 0, 458757, 196613, 0, 393221, 65541, 0, 393220, 5, 1, 327684, 5, 0, 327683, 5, 1, 262147, 5, 1, 262146, 5, 0, 196610, 65541, 0, 196609, 5, 0, 131073, 5, 1, 131072, 5, 1, 65536, 5, 1, 131071, 131077, 0, -393210, 196613, 0, -327675, 5, 1, -262140, 5, 0, -196605, 5, 1, -131070, 5, 1, -65535, 131077, 1, -65534, 65541, 2, -131069, 65541, 0, -196604, 5, 1, -262139, 131077, 0, -327674, 5, 1, -393209, 5, 1, -327672, 5, 1, -262137, 131077, 0, -196602, 65541, 2, -131067, 131077, 2, -65532, 5, 0, -65533, 196613, 1, 2, 196613, 0, 65537, 5, 1, -131068, 65541, 0, -196603, 131077, 1, -262138, 5, 1, -327673, 5, 1, -262136, 196613, 0, -196601, 65541, 2, -131066, 5, 0, -65531, 131077, 2, 4, 196613, 0, 65539, 131077, 2, 131074, 196613, 0, 3, 131077, 2, 65538, 65541, 0, -262135, 5, 1, -196600, 196613, 1, -131065, 5, 1, -65530, 5, 1, 5, 131077, 2, 65540, 196613, 0, 131075, 131077, 2, 196611, 65541, 1, 131076, 196613, 0, 65541, 65541, 1, 6, 5, 0, -65529, 5, 0, -196599, 5, 1, -131064, 131077, 2, -196598, 65541, 0, -131063, 196613, 0, -65528, 131077, 2, 7, 196613, 0, 65542, 196613, 1, 131078, 131077, 2, 196613, 131077, 0, 262148, 65541, 1, 131077, 196613, 0, 196612, 196613, 1, 262149, 65541, 2, 65550, 196613, 0, 131085, 131077, 0, 65549, 196613, 0, 13, 131077, 0, 196620, 5, 0, 131084, 196613, 0, 65548, 5, 0, 12, 196613, 0, -65524, 5, 1, 262155, 131077, 0, 196619, 5, 1, 131083, 65541, 2, 65547, 131077, 0, 11, 65541, 0, -65525, 5, 0, -131061, 131077, 0, 327690, 65541, 0, 262154, 5, 0, 196618, 5, 2, 131082, 131077, 1, 65546, 196613, 0, 10, 196613, 0, -65526, 196613, 0, -131062, 196613, 0, 393225, 5, 0, 327689, 5, 0, 262153, 5, 2, 196617, 131077, 1, 131081, 65541, 0, 65545, 196613, 0, 9, 65541, 0, -65527, 65541, 0, 458760, 5, 0, 393224, 131077, 0, 327688, 65541, 0, 262152, 65541, 1, 196616, 131077, 2, 131080, 131077, 2, 65544, 131077, 2, 8, 131077, 2, 458759, 131077, 0, 393223, 131077, 0, 327687, 5, 0, 262151, 131077, 0, 196615, 131077, 0, 131079, 5, 0, 65543, 131077, 0, 393222, 65541, 0, 327686, 5, 0, 262150, 5, 2, 196614, 131077, 2, 327685, 196613, 0, 65535, 65541, 2, 0, 65541, 2, 1, 5, 2)
 script = ExtResource("2_uwljc")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="TileMap"]
 z_index = 1
-position = Vector2(960, 540)
+position = Vector2(1288.22, 965.736)
 scale = Vector2(2, 2)
 script = ExtResource("3_mlo1i")
 
@@ -158,21 +192,20 @@ position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_sa3v0")
 debug_color = Color(0.952941, 0, 0.54902, 0.419608)
 
-[node name="Workshop" type="Area2D" parent="."]
-position = Vector2(771.243, 975.024)
+[node name="Workshop" type="Node2D" parent="."]
+position = Vector2(930.596, 1017.84)
 rotation = -0.471239
 scale = Vector2(0.975, 0.975)
 
 [node name="Sprite2D" type="Sprite2D" parent="Workshop"]
 position = Vector2(159.372, 162.675)
 rotation = 0.471239
-texture = ExtResource("6_nee8d")
+texture = ExtResource("5_bp1rj")
 
 [node name="Area2D7" type="StaticBody2D" parent="Workshop"]
 position = Vector2(697.734, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Area2D7"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_eqr7o")
 
 [node name="Area2D8" type="StaticBody2D" parent="Workshop"]
@@ -207,37 +240,28 @@ shape = SubResource("RectangleShape2D_2j0f4")
 position = Vector2(1556, 536)
 shape = SubResource("RectangleShape2D_2j0f4")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1576.71
-offset_top = 0.0578232
-offset_right = 1896.71
-offset_bottom = 1080.06
+[node name="Buyzone" parent="." instance=ExtResource("6_xn2it")]
 
-[node name="ItemList" type="ItemList" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -4.84
-anchor_right = -4.84
-offset_left = 1548.8
-offset_right = 1891.8
-offset_bottom = 1083.0
-script = ExtResource("5_wpl51")
+[node name="Ressources" parent="." instance=ExtResource("7_fxv2p")]
 
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.22
-anchor_top = -0.002
-anchor_right = -0.22
-anchor_bottom = -0.002
-offset_left = 131.287
-offset_top = 12.1155
-offset_right = 329.287
-offset_bottom = 96.1155
-text = "Menu"
-label_settings = SubResource("LabelSettings_6n5ll")
-horizontal_alignment = 1
+[node name="Forge" type="Node2D" parent="."]
 
-[connection signal="item_selected" from="Control/ItemList" to="Control/ItemList" method="_on_item_selected"]
+[node name="Sprite2D" type="Sprite2D" parent="Forge"]
+position = Vector2(1462.06, 840.777)
+scale = Vector2(0.92825, 0.92825)
+texture = ExtResource("8_j6pup")
+
+[node name="Scrapper" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Scrapper"]
+position = Vector2(1145.11, 1023.42)
+scale = Vector2(0.92825, 0.92825)
+texture = ExtResource("9_r28st")
+
+[node name="Node2D3" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D3"]
+position = Vector2(1478.87, 1015.23)
+rotation = -1.5708
+scale = Vector2(0.92825, 0.92825)
+texture = ExtResource("10_ygujo")
