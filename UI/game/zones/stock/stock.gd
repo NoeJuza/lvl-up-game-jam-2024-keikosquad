@@ -1,25 +1,27 @@
 extends Node
 
+var item_list: ItemList = null
 
-# https://www.nightquestgames.com/godot-4-basics-how-to-use-signals-for-node-communication-with-examples/
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	item_list = $"../ItemList"
+	# https://www.nightquestgames.com/godot-4-basics-how-to-use-signals-for-node-communication-with-examples/
 	global.material_amount_changed.connect(_on_material_amount_changed)
 
 func _on_item_list_ready():
 	print("list_ready")
-	var item_list = $"../Ressources/Buy/ItemList"
-	for material in global.material_array:
-		item_list.add_item(str(material["name"]) + " : " + str(material["amount"]))
-	
+	for i in range(len(global.material_array)):
+		item_list.add_item(" ")
 
-func _on_item_list_item_clicked(index, at_position, mouse_button_index):
-	global.set_material_amount("wood", 5)
-	print(global.material_array)
+	global.set_material_amount("wood", 0) # initial update
+
+func _on_button_pressed():
+	global.add_material_amount("wood", 5)
 
 func _on_material_amount_changed(name, value):
 	print("on_material")
-	var item_list = $"../Ressources/Buy/ItemList"
-	item_list.clear()
-	for material in global.material_array:
-		item_list.add_item(str(material["name"]) + " : " + str(material["amount"]))
+	# update display
+	for i in range(item_list.get_item_count()):
+		var material = global.material_array[i]
+		item_list.set_item_text(i, str(material["name"]) + " : " + str(material["amount"]))
+
