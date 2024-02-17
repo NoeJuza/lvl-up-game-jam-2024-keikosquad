@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cmlw2m3kualuh"]
 
 [ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_2s2o3"]
-[ext_resource type="Script" path="res://moving-character/TileMap.gd" id="2_6e4pd"]
+[ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_6e4pd"]
 [ext_resource type="Texture2D" uid="uid://d3yy5pcbbxtl2" path="res://assets/stickman.png" id="2_grhbb"]
-[ext_resource type="Script" path="res://moving-character/CharacterBody2D.gd" id="3_xgjdk"]
+[ext_resource type="Script" path="res://tmp_scenes/moving-character/CharacterBody2D.gd" id="3_xgjdk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hngpw"]
 texture = ExtResource("1_2s2o3")

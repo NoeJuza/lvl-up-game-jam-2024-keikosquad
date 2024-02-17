@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c44jqg80c8bog"]
+
+[ext_resource type="Script" path="res://worldobjects/battle/construction/construction.gd" id="1_vyrxq"]
+
+[node name="WorldObject" type="Node2D"]
+script = ExtResource("1_vyrxq")
+type = "construction"
