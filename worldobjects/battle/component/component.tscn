@@ -1,7 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfmwajckabue1"]
+[gd_scene load_steps=3 format=3 uid="uid://cfmwajckabue1"]
 
 [ext_resource type="Script" path="res://worldobjects/battle/component/component.gd" id="1_s0ipj"]
 
-[node name="WorldObject" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fv8hs"]
+radius = 50.0
+
+[node name="Component" type="Node2D"]
 script = ExtResource("1_s0ipj")
 type = "component"
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_fv8hs")
+debug_color = Color(0.807843, 0.00392157, 0.988235, 0.419608)

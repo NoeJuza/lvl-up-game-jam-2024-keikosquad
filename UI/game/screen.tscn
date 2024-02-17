@@ -1,12 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddx78u5px3vb6"]
+[gd_scene load_steps=14 format=3 uid="uid://5k4icjjnsaql"]
 
 [ext_resource type="Texture2D" uid="uid://b050t70wcy1oy" path="res://assets/tilemap_v1_grayscale.png" id="1_jlnrb"]
 [ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_v0nts"]
 [ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_uwljc"]
-[ext_resource type="Script" path="res://tmp_scenes/moving-character/CharacterBody2D.gd" id="3_mlo1i"]
-[ext_resource type="Texture2D" uid="uid://d3yy5pcbbxtl2" path="res://assets/stickman.png" id="4_bmje7"]
+[ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_bq8ws"]
 [ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="5_bp1rj"]
 [ext_resource type="PackedScene" uid="uid://bt1qyx7baab5v" path="res://UI/game/zones/buy/buy.tscn" id="6_xn2it"]
+[ext_resource type="PackedScene" uid="uid://b484gfw36707u" path="res://players/player2/Walls.tscn" id="7_15a31"]
 [ext_resource type="PackedScene" uid="uid://c61tm2xdybiqv" path="res://UI/game/zones/stock/stock.tscn" id="7_fxv2p"]
 [ext_resource type="Texture2D" uid="uid://b3s0hl6ohu7fu" path="res://assets/ws_forge.png" id="8_j6pup"]
 [ext_resource type="Texture2D" uid="uid://xui6kf0d6bd0" path="res://assets/ressources/egg.png" id="8_mrc44"]
@@ -145,23 +145,6 @@ texture_region_size = Vector2i(256, 128)
 3:2/0 = 0
 1:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r4v0m"]
-texture = ExtResource("1_jlnrb")
-texture_region_size = Vector2i(256, 128)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-1:3/0 = 0
-
 [sub_resource type="TileSet" id="TileSet_ntcci"]
 tile_shape = 1
 tile_layout = 5
@@ -172,23 +155,13 @@ terrain_set_0/terrain_0/color = Color(0.992157, 0.776471, 0.537255, 1)
 terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.658824, 0.780392, 0.32549, 1)
 sources/5 = SubResource("TileSetAtlasSource_hngpw")
-sources/6 = SubResource("TileSetAtlasSource_r4v0m")
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sa3v0"]
-height = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqr7o"]
 size = Vector2(379.473, 36)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_srcbp"]
-size = Vector2(1920, 40)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j0f4"]
-size = Vector2(40, 1080)
-
 [node name="Main" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="map_tilemap" type="TileMap" parent="."]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_ntcci")
 format = 2
@@ -203,94 +176,56 @@ layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
 script = ExtResource("2_uwljc")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="TileMap"]
+[node name="player2" parent="map_tilemap" instance=ExtResource("3_bq8ws")]
+position = Vector2(960, 540)
+
+[node name="player_walls" parent="." instance=ExtResource("7_15a31")]
+
+[node name="ui_buy" parent="." instance=ExtResource("6_xn2it")]
 z_index = 1
-position = Vector2(1288.22, 965.736)
-scale = Vector2(2, 2)
-script = ExtResource("3_mlo1i")
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMap/CharacterBody2D"]
-position = Vector2(0, -20)
-scale = Vector2(0.148936, 0.148936)
-texture = ExtResource("4_bmje7")
+[node name="ui_stock" parent="." instance=ExtResource("7_fxv2p")]
+z_index = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/CharacterBody2D"]
-position = Vector2(0, -19)
-shape = SubResource("CapsuleShape2D_sa3v0")
-debug_color = Color(0.952941, 0, 0.54902, 0.419608)
-
-[node name="Workshop" type="Node2D" parent="."]
+[node name="workshop" type="Node2D" parent="."]
 position = Vector2(930.596, 1017.84)
 rotation = -0.471239
 scale = Vector2(0.975, 0.975)
 
-[node name="Sprite2D" type="Sprite2D" parent="Workshop"]
+[node name="ground" type="Sprite2D" parent="workshop"]
 position = Vector2(159.372, 162.675)
 rotation = 0.471239
 texture = ExtResource("5_bp1rj")
 
-[node name="Area2D7" type="StaticBody2D" parent="Workshop"]
+[node name="wall1" type="StaticBody2D" parent="workshop"]
 position = Vector2(697.734, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Area2D7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="workshop/wall1"]
 shape = SubResource("RectangleShape2D_eqr7o")
 
-[node name="Area2D8" type="StaticBody2D" parent="Workshop"]
+[node name="wall2" type="StaticBody2D" parent="workshop"]
 position = Vector2(-36.015, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Workshop/Area2D8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="workshop/wall2"]
 shape = SubResource("RectangleShape2D_eqr7o")
 
-[node name="Area" type="Node2D" parent="."]
+[node name="machine_forge" type="Node2D" parent="."]
 
-[node name="Area2D" type="StaticBody2D" parent="Area"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D"]
-position = Vector2(961.122, -17.9594)
-shape = SubResource("RectangleShape2D_srcbp")
-
-[node name="Area2D2" type="StaticBody2D" parent="Area"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D2"]
-position = Vector2(960, 1100)
-shape = SubResource("RectangleShape2D_srcbp")
-
-[node name="Area2D3" type="StaticBody2D" parent="Area"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D3"]
-position = Vector2(-20, 540)
-shape = SubResource("RectangleShape2D_2j0f4")
-
-[node name="Area2D4" type="StaticBody2D" parent="Area"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D4"]
-position = Vector2(1556, 536)
-shape = SubResource("RectangleShape2D_2j0f4")
-
-[node name="Buyzone" parent="." instance=ExtResource("6_xn2it")]
-
-[node name="Egg" type="Sprite2D" parent="Buyzone"]
-texture = ExtResource("8_mrc44")
-
-[node name="Ressources" parent="." instance=ExtResource("7_fxv2p")]
-
-[node name="Forge" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Forge"]
+[node name="Sprite2D" type="Sprite2D" parent="machine_forge"]
 position = Vector2(1462.06, 840.777)
 scale = Vector2(0.92825, 0.92825)
 texture = ExtResource("8_j6pup")
 
-[node name="Scrapper" type="Node2D" parent="."]
+[node name="machine_scrapper" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Scrapper"]
+[node name="Sprite2D" type="Sprite2D" parent="machine_scrapper"]
 position = Vector2(1145.11, 1023.42)
 scale = Vector2(0.92825, 0.92825)
 texture = ExtResource("9_r28st")
 
-[node name="Node2D3" type="Node2D" parent="."]
+[node name="machine_dropper" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D3"]
+[node name="Sprite2D" type="Sprite2D" parent="machine_dropper"]
 position = Vector2(1478.87, 1015.23)
 rotation = -1.5708
 scale = Vector2(0.92825, 0.92825)
