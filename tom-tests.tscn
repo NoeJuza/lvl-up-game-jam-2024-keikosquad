@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://d15otd66orn8g"]
+
+[ext_resource type="Texture2D" uid="uid://d00r56y1eikhx" path="res://tilemap250x125.png" id="1_u827r"]
+[ext_resource type="Texture2D" uid="uid://ci7d6a4dq0lw4" path="res://tilemap250x125_extrude.png" id="2_gi42r"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvef7"]
+texture = ExtResource("1_u827r")
+texture_region_size = Vector2i(250, 125)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_corner = 0
+0:2/0/terrains_peering_bit/bottom_right_side = 0
+0:2/0/terrains_peering_bit/bottom_corner = 0
+0:2/0/terrains_peering_bit/bottom_left_side = 0
+0:2/0/terrains_peering_bit/left_corner = 0
+0:2/0/terrains_peering_bit/top_left_side = 0
+0:2/0/terrains_peering_bit/top_corner = 0
+0:2/0/terrains_peering_bit/top_right_side = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyj7i"]
+texture = ExtResource("2_gi42r")
+texture_region_size = Vector2i(250, 125)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p4hh5"]
+tile_shape = 1
+tile_layout = 5
+tile_offset_axis = 1
+tile_size = Vector2i(250, 125)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_tvef7")
+sources/4 = SubResource("TileSetAtlasSource_jyj7i")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_p4hh5")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 4, 0, 1, 65540, 0, 2, 65540, 0, 131075, 65540, 1, 65539, 131076, 1, 131076, 196612, 1, 196612, 131076, 2, 262148, 131076, 2, 65540, 4, 2, 4, 131076, 2, -65532, 196612, 1, -65533, 65540, 2, -65534, 65540, 2, -65535, 65540, 1, -131071, 131076, 2, 3, 4, 1, 65538, 196612, 0, 65537, 65540, 0, 65536, 131076, 0, 131073, 65540, 0, 131074, 4, 1, 196611, 65540, 0, 196610, 131076, 0, 262147, 196612, 0, 196613, 4, 1, 131077, 4, 0, 65542, 4, 0, 131078, 4, 0, 65541, 131076, 0, 6, 65540, 0, 65543, 4, 0, 7, 4, 1, -65530, 4, 0, -65531, 4, 1, -131067, 4, 0, -131068, 196612, 0, -196604, 65540, 0, -196605, 4, 1, -262141, 65540, 0, -196606, 196612, 0, -131070, 131076, 0, -131069, 4, 0, 5, 131076, 0, -65536, 4, 1, 65535, 65540, 0)
