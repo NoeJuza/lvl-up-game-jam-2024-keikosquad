@@ -8,10 +8,7 @@ var _previous_hovered_cell: Vector2i = Vector2i(0, 0)
 var _exclude_tiles: Array[Vector2i]  = []
 var _item_selected_in_list: bool     = false
 var _was_cleared: bool               = false
-var _placed_tiles: Array[Vector2i] = []
-
-
-#@onready var tileSelectMat: ShaderMaterial = load("res://placing/TileSelectMaterial.material")
+var _placed_tiles: Array[Vector2i]   = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,10 +21,12 @@ func _ready():
 	_exclude_tiles.append(Vector2i(2, 1))
 	_exclude_tiles.append(Vector2i(3, 1))
 
+	global.item_selected_buyzone.connect(_on_item_list_item_selected)
+
 	# campfire
 	_sprites_array.append({
 		"name": "Egg",
-		"sprite": $"../Egg",
+		"sprite": $"../Buyzone/Egg",
 	})
 
 	# rock
@@ -40,8 +39,8 @@ func _ready():
 
 
 func _unhandled_input(event):
-	#if !_item_selected_in_list:
-	#	return
+	if !_item_selected_in_list:
+		return
 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var clicked_cell: Vector2i = local_to_map(event.position)
@@ -50,14 +49,13 @@ func _unhandled_input(event):
 		if !_is_tile_in_blacklist(clicked_tile):
 			var sprite = _sprites_array[_selected_tile]["sprite"]
 			#duplicate the sprite
-			return
+
 			var new_sprite = sprite.duplicate()
 			if(sprite != null and _placed_tiles.find(clicked_cell) == -1):
 				new_sprite.position = event.position
 				add_child(new_sprite)
 				_placed_tiles.append(clicked_cell)
 				_clear_selected_tile()
-
 
 	if event is InputEventMouseMotion:
 		var hovered_cell: Vector2i = local_to_map(event.position)
@@ -79,7 +77,7 @@ func _clear_selected_tile():
 	set_cell(1, _previous_hovered_cell, -1, Vector2i(0, 0))
 	_was_cleared = true
 	# deselect all other items
-	$"../ItemList".deselect_all()
+	$"../Buyzone/Buy/ItemList".deselect_all()
 	_item_selected_in_list = false
 
 
@@ -93,7 +91,7 @@ func _on_item_list_item_selected(index):
 
 
 func _on_item_list_ready():
-	var item_list = $"../ItemList"
+	var item_list = $"../Buyzone/Buy/ItemList"
 	if(item_list != null):
 		for sprite in _sprites_array:
 			item_list.add_item(sprite["name"])
@@ -105,4 +103,3 @@ func _on_buyzone_ready():
 	if(item_list != null):
 		for sprite in _sprites_array:
 			item_list.add_item(sprite["name"])
-
