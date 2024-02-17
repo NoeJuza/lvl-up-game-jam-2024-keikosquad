@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_2s2o3"]
 [ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_6e4pd"]
-[ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://player2/player2.tscn" id="3_t5vbw"]
+[ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_t5vbw"]
 [ext_resource type="PackedScene" uid="uid://cq1kujaqxnlkr" path="res://worldobjects/battle/material/material.tscn" id="4_v6oal"]
 [ext_resource type="PackedScene" uid="uid://cfmwajckabue1" path="res://worldobjects/battle/component/component.tscn" id="5_r250r"]
 [ext_resource type="PackedScene" uid="uid://c44jqg80c8bog" path="res://worldobjects/battle/construction/construction.tscn" id="6_d2dyi"]

@@ -71,6 +71,8 @@ func _on_interaction_zone_body_shape_entered(body_rid, body, body_shape_index, l
 		print(parentNode.type)
 		has_item_near = true
 		last_entered_item_array.append(parentNode)
+		$interaction_tooltip.show()
+		$interaction_tooltip.play()
 
 func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	print("body has left zone")
@@ -80,6 +82,8 @@ func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, lo
 		last_entered_item_array.remove_at(index)
 		if last_entered_item_array.size() == 0:
 			has_item_near = false
+			$interaction_tooltip.hide()
+			$interaction_tooltip.stop()
 
 func _input(ev):
 	if Input.is_action_just_pressed("interact"):

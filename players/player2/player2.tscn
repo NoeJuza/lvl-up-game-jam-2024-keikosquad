@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://udwbvack0gth"]
+[gd_scene load_steps=33 format=3 uid="uid://udwbvack0gth"]
 
-[ext_resource type="Script" path="res://player2/player2.gd" id="1_x8gya"]
+[ext_resource type="Script" path="res://players/player2/player2.gd" id="1_x8gya"]
 [ext_resource type="Texture2D" uid="uid://cdtjrq65yjoa3" path="res://assets/player 2/player_two-static_512x512.png" id="2_iw21j"]
 [ext_resource type="Texture2D" uid="uid://ct3ftrxgucw32" path="res://assets/player 2/player_two-static-grab_512x512.png" id="3_ps1im"]
 [ext_resource type="Texture2D" uid="uid://c26h3e7cvsrka" path="res://assets/player 2/WalkGrab_animation/player1_walk-grab00.png" id="3_rw8y3"]
@@ -19,6 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://dap7xcehyqmeg" path="res://assets/player 2/WalkGrab_animation/player1_walk-grab07.png" id="10_eiovf"]
 [ext_resource type="Texture2D" uid="uid://jh6sweylyahs" path="res://assets/player 2/WalkAnimation/player1_walk06.png" id="10_t8n2l"]
 [ext_resource type="Texture2D" uid="uid://bnsfmcna08jma" path="res://assets/player 2/WalkAnimation/player1_walk07.png" id="11_uedqi"]
+[ext_resource type="Texture2D" uid="uid://dyucvms08330a" path="res://assets/UI/E_anim/letter-E00.png" id="20_pmc6j"]
+[ext_resource type="Texture2D" uid="uid://ccmnx1sw63w2s" path="res://assets/UI/E_anim/letter-E01.png" id="21_2hiuy"]
+[ext_resource type="Texture2D" uid="uid://fek2ikxj8e8m" path="res://assets/UI/E_anim/letter-E02.png" id="22_a2arl"]
+[ext_resource type="Texture2D" uid="uid://c6x2tha748vot" path="res://assets/UI/E_anim/letter-E03.png" id="23_ss7w2"]
+[ext_resource type="Texture2D" uid="uid://dvnn0ll53h2rm" path="res://assets/UI/E_anim/letter-E04.png" id="24_fp2jk"]
+[ext_resource type="Texture2D" uid="uid://dtg6bhhl4hyvj" path="res://assets/UI/E_anim/letter-E05.png" id="25_7d66d"]
+[ext_resource type="Texture2D" uid="uid://bmspapspu2jfr" path="res://assets/UI/E_anim/letter-E06.png" id="26_htn0u"]
+[ext_resource type="Texture2D" uid="uid://buktltp57w0cv" path="res://assets/UI/E_anim/letter-E07.png" id="27_2uy4f"]
+[ext_resource type="Texture2D" uid="uid://dywjboxnmam34" path="res://assets/UI/E_anim/letter-E08.png" id="28_q4h76"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d8ihv"]
 animations = [{
@@ -102,6 +111,41 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nnjnw"]
 radius = 50.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpmib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_pmc6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_2hiuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_a2arl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ss7w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fp2jk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_7d66d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_htn0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_2uy4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_q4h76")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(2, 2)
@@ -123,6 +167,12 @@ debug_color = Color(0.952941, 0, 0.54902, 0.419608)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_zone"]
 shape = SubResource("CircleShape2D_nnjnw")
 debug_color = Color(0.423529, 0.458824, 1, 0.419608)
+
+[node name="interaction_tooltip" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -63.25)
+scale = Vector2(0.246094, 0.246094)
+sprite_frames = SubResource("SpriteFrames_bpmib")
 
 [connection signal="body_shape_entered" from="interaction_zone" to="." method="_on_interaction_zone_body_shape_entered"]
 [connection signal="body_shape_exited" from="interaction_zone" to="." method="_on_interaction_zone_body_shape_exited"]
