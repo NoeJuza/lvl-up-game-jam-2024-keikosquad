@@ -1,7 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtq5h81pthumo"]
+[gd_scene load_steps=3 format=3 uid="uid://dtq5h81pthumo"]
 
-[ext_resource type="Script" path="res://worldobjects/battle/material/material.gd" id="1_meuhn"]
+[ext_resource type="Script" path="res://worldobjects/workshop/dropper/dropper.gd" id="1_6gdm8"]
 
-[node name="WorldObject" type="Node2D"]
-script = ExtResource("1_meuhn")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4lbh"]
+size = Vector2(100, 100)
+
+[node name="Dropper" type="Node2D"]
+script = ExtResource("1_6gdm8")
 type = "dropper"
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_t4lbh")
+debug_color = Color(0.992157, 0, 0.266667, 0.419608)
