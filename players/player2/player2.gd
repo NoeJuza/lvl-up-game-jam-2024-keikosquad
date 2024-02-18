@@ -95,8 +95,8 @@ func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, lo
 
 func _input(ev):
 	if Input.is_action_just_pressed("interact"):
-		SoundManager.playPrend(self)
 		if is_holding :
+			SoundManager.playPose(self)
 			for interactible in interactible_queue:
 				if interactible.type == "construction" and held_item.type == "component":
 					if interactible.hps < 100:
@@ -110,6 +110,7 @@ func _input(ev):
 			held_item = null
 			is_dropping = true
 		elif has_interactible_near and not is_dropping: # pickup item
+			SoundManager.playPrend(self)
 			for interactible in interactible_queue:
 				if interactible.type == "material" or interactible.type == "component":
 					is_holding = true
