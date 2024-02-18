@@ -8,6 +8,7 @@ var can_spawn_component = true
 signal hps_changed
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Timer.start()
 	$ProgressBar.value = hps
 	$StaticBody2D2/AnimatedSprite2D.play(construction_name)
 
@@ -57,3 +58,8 @@ func _on_static_body_2d_2_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_released("tear_down"):
 		hps = 0
 		hps_changed.emit()
+
+
+func _on_timer_timeout():
+	hps -= 1
+	hps_changed.emit()

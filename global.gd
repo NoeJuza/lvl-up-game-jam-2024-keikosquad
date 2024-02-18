@@ -13,7 +13,7 @@ var scrappers = {"tadpole":
 
 var constructions = [{"name": "big frog", "costs": {"tadpole": 2, "plank": 0}}, {"name": "frog on a stool", "costs": {"tadpole": 1, "plank": 1}}]
 
-var stock_dict = {"tadpole": 10, "plank": 10}
+var stock_dict = {"tadpole": 0, "plank": 0}
 # Add amount
 func add_stock_amount(name, value):
 	stock_dict[name] += value

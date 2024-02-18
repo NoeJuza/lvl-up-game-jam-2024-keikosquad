@@ -30,7 +30,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bc0pd")
+"texture": ExtResource("7_3y7ew")
 }],
 "loop": true,
 "name": &"big frog",
@@ -162,7 +162,7 @@ input_pickable = true
 position = Vector2(-50, -110)
 scale = Vector2(0.24707, 0.24707)
 sprite_frames = SubResource("SpriteFrames_hh178")
-animation = &"frog on a stool"
+animation = &"big frog"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(-1, 0)
@@ -179,6 +179,8 @@ theme = SubResource("Theme_by4nw")
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="hps_changed" from="." to="." method="_on_hps_changed"]
 [connection signal="input_event" from="StaticBody2D2" to="." method="_on_static_body_2d_2_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
