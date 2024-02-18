@@ -43,6 +43,8 @@ func _on_hps_changed():
 	if hps > 50 and not can_spawn_component:
 		can_spawn_component = true
 	if hps <= 0:
+		$life_ticks.stop()
+		$attack_cooldown.stop()
 		var material = load("res://worldobjects/battle/material/material.tscn")
 		var instance = material.instantiate()
 		var random = RandomNumberGenerator.new()
