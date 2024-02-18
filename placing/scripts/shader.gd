@@ -1,8 +1,7 @@
-extends Node2D
+extends Sprite2D
 
+@onready var tileSelectMat: ShaderMaterial = load("res://placing/TileSelectMaterial.material")
 
-class_name WorldObject
-@export var type: String = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -11,3 +10,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	#tileSelectMat.set_shader_parameter("globalMousePos", get_global_mouse_position())

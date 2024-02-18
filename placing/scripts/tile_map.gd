@@ -3,6 +3,11 @@ extends TileMap
 var _tiles_array = []
 var _selected_tile = 0
 
+var _previous_hovered_cell = Vector2i(0, 0)
+
+#@onready var tileSelectMat: ShaderMaterial = load("res://placing/TileSelectMaterial.material")
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# campfire
@@ -50,19 +55,19 @@ func _unhandled_input(event):
 			var position = Vector2i(clicked_cell.x - cpt, clicked_cell.y - cpt)
 			var tile_id = prop["tile_id"]
 			
-			set_cell(1, position, 2, tile_id)
+			set_cell(2, position, 2, tile_id)
 			cpt += 1
 
 
+	if event is InputEventMouseMotion:
+		var hovered_cell = local_to_map(event.position)
+		
+		var hover_tile = Vector2i(0, 1)
+		set_cell(1, hovered_cell, 2, hover_tile)
 
-	#if event is InputEventMouseMotion:
-		#var hovered_cell = local_to_map(event.position)
-		# create a new black tile
-		#var tile = TileMap.new()
-		#tile.tile_set = tile_set
-		#tile.cell_size = 64
-		#tile.set_cell(0, hovered_cell, 1, Vector2i(4, 14))
-		#add_child(tile)
+		if _previous_hovered_cell != hovered_cell:
+			set_cell(1, _previous_hovered_cell, 0, Vector2i(0, 0))
+			_previous_hovered_cell = hovered_cell
 
 
 func _on_item_list_item_selected(index):

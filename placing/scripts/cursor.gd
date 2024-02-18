@@ -1,11 +1,11 @@
-extends Node2D
+extends Node
+
+var arrsow = load("res://assets/cursor.png")
 
 
-class_name WorldObject
-@export var type: String = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Input.set_custom_mouse_cursor(arrow)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
