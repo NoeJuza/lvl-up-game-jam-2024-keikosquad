@@ -6,6 +6,7 @@ signal use_scrapper(infos)
 signal can_interact_changed
 
 const SPEED = 250
+const SoundManager = preload("res://Sound/sfx/sfxController.gd")
 var is_dropping: bool = false
 var is_holding : bool = false
 var held_item : WorldObject = null
@@ -152,6 +153,7 @@ func _input(ev):
 func compute_possible_interaction():
 	if has_interactible_near:
 		if is_holding :
+			SoundManager.playPose(self)
 			for interactible in interactible_queue:
 				if interactible.type == "construction" and held_item.type == "component":
 					if interactible.hps < 100:
