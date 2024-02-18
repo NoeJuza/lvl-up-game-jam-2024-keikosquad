@@ -25,14 +25,14 @@ func _ready():
 
 	# campfire
 	_sprites_array.append({
-		"name": "Egg",
-		"sprite": $"../ui_buy/Egg",
+		"name": "Frog on a stool",
+		"sprite": $"../Buy/frog on a stool",
 	})
 
 	# rock
 	_sprites_array.append({
-		"name": "Rock",
-		"sprite": $"../Rock",
+		"name": "Big frog",
+		"sprite": $"../Buy/big frog",
 	})
 
 	print("MAIS C'EST PAS ABORDABLE")
@@ -77,7 +77,7 @@ func _clear_selected_tile():
 	set_cell(1, _previous_hovered_cell, -1, Vector2i(0, 0))
 	_was_cleared = true
 	# deselect all other items
-	$"../ui_buy/ItemList".deselect_all()
+	$"../Buy/ItemList".deselect_all()
 	_item_selected_in_list = false
 
 
@@ -91,7 +91,7 @@ func _on_item_list_item_selected(index):
 
 
 func _on_ui_buy_ready():
-	var item_list = $"../ui_buy/ItemList"
+	var item_list = $"../Buy/ItemList"
 	print(item_list)
 	if(item_list != null):
 		for sprite in _sprites_array:

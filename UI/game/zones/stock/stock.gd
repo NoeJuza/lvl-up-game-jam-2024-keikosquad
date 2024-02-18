@@ -10,9 +10,9 @@ func _ready():
 
 func _on_item_list_ready():
 	print("list_ready")
-	for i in range(len(global.stock_array)):
+	for i in global.stock_dict.keys():
 		item_list.add_item(" ")
-
+		
 	global.add_stock_amount("plank", 0) # initial update
 
 func _on_button_pressed():
@@ -21,7 +21,7 @@ func _on_button_pressed():
 func _on_stock_amount_changed():
 	print("on_stock")
 	# update display
-	for i in range(item_list.get_item_count()):
-		var stock = global.stock_array[i]
-		item_list.set_item_text(i, str(stock["name"]) + " : " + str(stock["amount"]))
+	for i in range(global.stock_dict.keys().size()):
+		var stock = global.stock_dict[global.stock_dict.keys()[i]]
+		item_list.set_item_text(i, str(global.stock_dict.keys()[i]) + " : " + str(stock))
 

@@ -28,4 +28,3 @@ offset_bottom = 33.0
 wait_time = 2.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-

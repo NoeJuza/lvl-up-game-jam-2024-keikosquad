@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cjxv18txfngds"]
 
-[ext_resource type="Texture2D" uid="uid://cy48ooe82huoe" path="res://assets/tilemap/tilemap_v1.png" id="1_a04lq"]
-[ext_resource type="Texture2D" uid="uid://blhm6fa6f6d1a" path="res://assets/tilemap/tilemap_v1_grayscale.png" id="2_ij4gd"]
+[ext_resource type="Texture2D" uid="uid://ni2kx7qw6fb6" path="res://assets/tilemap/tilemap_v1.png" id="1_a04lq"]
+[ext_resource type="Texture2D" uid="uid://cpqx20bjocrof" path="res://assets/tilemap/tilemap_v1_grayscale.png" id="2_ij4gd"]
 [ext_resource type="Script" path="res://UI/game/zones/buy/buy_zone.gd" id="3_6m05v"]
 [ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="4_mwkfm"]
 [ext_resource type="PackedScene" uid="uid://b484gfw36707u" path="res://players/player2/Walls.tscn" id="5_wiiw1"]
@@ -167,9 +167,7 @@ terrain_set_0/terrain_1/color = Color(0.658824, 0.780392, 0.32549, 1)
 sources/5 = SubResource("TileSetAtlasSource_hngpw")
 sources/6 = SubResource("TileSetAtlasSource_8ucw4")
 
-[node name="World" type="Node2D"]
-
-[node name="map_tilemap" type="TileMap" parent="."]
+[node name="map_tilemap" type="TileMap"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_4wcm6")
 format = 2
@@ -184,7 +182,7 @@ layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
 script = ExtResource("3_6m05v")
 
-[node name="player2" parent="map_tilemap" instance=ExtResource("4_mwkfm")]
+[node name="player2" parent="." instance=ExtResource("4_mwkfm")]
 position = Vector2(960, 540)
 
 [node name="player_walls" parent="." instance=ExtResource("5_wiiw1")]

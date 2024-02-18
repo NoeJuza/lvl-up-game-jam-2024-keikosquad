@@ -10,7 +10,7 @@ var scrappers = {"tadpole":
 				"plank":
 					{"texture":ImageTexture.create_from_image(Image.load_from_file("res://assets/machine/machine-planck_to_wood.png"))}
 				}
-var constructions = [{"name": "big frog", "costs": [2,0]},{"name": "frog on a stool", "costs": [1,1]}]
+var constructions = [{"name": "big frog", "costs": {"tadpole":"2", "plank":0}},{"name": "frog on a stool", "costs": {"tadpole":"1", "plank":1}}]
 
 var stock_dict = {"tadpole": 0, "plank": 0} 
 # Add amount

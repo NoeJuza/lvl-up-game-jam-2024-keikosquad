@@ -35,7 +35,7 @@ func _on_hps_changed():
 	if hps <= 0:
 		create_component_in_front()
 		queue_free()
-    
+	
 func create_component_in_front():
 	var component = load("res://worldobjects/battle/component/component.tscn")
 	var instance = component.instantiate()
