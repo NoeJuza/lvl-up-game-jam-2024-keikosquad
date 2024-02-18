@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgfvxpnv2l3ky"]
+
+[ext_resource type="Texture2D" uid="uid://dyucvms08330a" path="res://assets/UI/E_anim/letter-E00.png" id="1_ov38r"]
+
+[node name="Bullet" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ov38r")

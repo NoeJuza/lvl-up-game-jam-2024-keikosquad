@@ -2,6 +2,7 @@ extends WorldObject
 class_name Forge
 @export var accepted_material: String
 @export var output_component: String
+
 var is_busy: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():

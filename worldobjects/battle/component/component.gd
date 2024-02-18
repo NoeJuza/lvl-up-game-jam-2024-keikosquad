@@ -1,6 +1,7 @@
 extends WorldObject
 class_name Component
 @export var component_name: String
+
 @export var collider_radius : float
 
 # Called when the node enters the scene tree for the first time.

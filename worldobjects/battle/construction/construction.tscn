@@ -1,5 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://c44jqg80c8bog"]
 
+
 [ext_resource type="Script" path="res://worldobjects/battle/construction/construction.gd" id="1_vyrxq"]
 [ext_resource type="Texture2D" uid="uid://c6d0e075ie07g" path="res://assets/constructions/frog1_front/frog_1_front-facing00.png" id="2_bc0pd"]
 [ext_resource type="Texture2D" uid="uid://iqbtynajans6" path="res://assets/constructions/frog1_back/frog_1_back-facing00.png" id="3_feclm"]
@@ -169,6 +170,7 @@ shape = SubResource("CircleShape2D_yr2dw")
 debug_color = Color(0.27451, 0.631373, 0, 0.419608)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+
 z_index = 1
 offset_left = -130.0
 offset_top = -256.0

@@ -1,8 +1,10 @@
 extends WorldObject
 class_name Scrapper
+
 @export var accepted_component: String
 @export var output_material: String
 var is_busy: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var texture : Texture2D = global.scrappers[accepted_component].texture

@@ -1,12 +1,13 @@
 [gd_scene load_steps=22 format=3 uid="uid://5k4icjjnsaql"]
 
+[ext_resource type="PackedScene" uid="uid://cjxv18txfngds" path="res://UI/game/zones/worldmap/worldmap.tscn" id="1_od13e"]
 [ext_resource type="Texture2D" uid="uid://cpqx20bjocrof" path="res://assets/tilemap/tilemap_v1_grayscale.png" id="1_jlnrb"]
 [ext_resource type="Texture2D" uid="uid://ni2kx7qw6fb6" path="res://assets/tilemap/tilemap_v1.png" id="1_v0nts"]
 [ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_bq8ws"]
 [ext_resource type="Script" path="res://UI/game/zones/buy/buy_zone.gd" id="3_eprsy"]
 [ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="5_bp1rj"]
+[ext_resource type="PackedScene" uid="uid://pn5uuemspuex" path="res://ennemies/ennemies.tscn" id="5_stg5d"]
 [ext_resource type="PackedScene" uid="uid://bt1qyx7baab5v" path="res://UI/game/zones/buy/buy.tscn" id="6_xn2it"]
-[ext_resource type="PackedScene" uid="uid://b484gfw36707u" path="res://players/player2/Walls.tscn" id="7_15a31"]
 [ext_resource type="PackedScene" uid="uid://c61tm2xdybiqv" path="res://UI/game/zones/stock/stock.tscn" id="7_fxv2p"]
 [ext_resource type="Texture2D" uid="uid://b3s0hl6ohu7fu" path="res://assets/ws_forge.png" id="8_j6pup"]
 [ext_resource type="Texture2D" uid="uid://dacbbc73v3qer" path="res://assets/ressources/eggs.png" id="8_mrc44"]
@@ -18,6 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://cvk3v22ilfa13" path="res://worldobjects/workshop/forge/forge.tscn" id="16_lxnpe"]
 [ext_resource type="PackedScene" uid="uid://dtq5h81pthumo" path="res://worldobjects/workshop/dropper/dropper.tscn" id="17_v0upt"]
 [ext_resource type="PackedScene" uid="uid://dsyeiuxyepfwd" path="res://worldobjects/workshop/scrapper/scrapper.tscn" id="18_jiek1"]
+
+[node name="Main" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_od13e")]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hngpw"]
 texture = ExtResource("1_v0nts")
@@ -203,6 +208,7 @@ position = Vector2(960, 540)
 [node name="player_walls" parent="." instance=ExtResource("7_15a31")]
 position = Vector2(22, 0)
 
+
 [node name="ui_buy" parent="." instance=ExtResource("6_xn2it")]
 z_index = 1
 
@@ -211,6 +217,8 @@ texture = ExtResource("8_mrc44")
 
 [node name="ui_stock" parent="." instance=ExtResource("7_fxv2p")]
 z_index = 1
+
+[node name="Ennemies" parent="." instance=ExtResource("5_stg5d")]
 
 [node name="workshop" type="Node2D" parent="."]
 position = Vector2(930.596, 1017.84)
@@ -258,6 +266,7 @@ position = Vector2(414, 246)
 
 [node name="forge_tadpole" parent="." instance=ExtResource("16_lxnpe")]
 position = Vector2(1615, 1033)
+
 accepted_material = "egg"
 output_component = "tadpole"
 

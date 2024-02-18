@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal use_dropper(infos)
 signal use_forge(infos)
 signal use_scrapper(infos)
+signal can_interact_changed
 
 const SPEED = 250
 var is_dropping: bool = false
@@ -145,6 +146,7 @@ func _input(ev):
 					print(held_item.component_name)
 					global.add_stock_amount(held_item.component_name, 1)
 					held_item = null
+
 	is_dropping = false
 func compute_possible_interaction():
 	if has_interactible_near:
