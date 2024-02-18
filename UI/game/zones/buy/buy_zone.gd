@@ -8,7 +8,7 @@ var _previous_hovered_cell: Vector2i = Vector2i(0, 0)
 var _exclude_tiles: Array[Vector2i]  = []
 var _item_selected_in_list: bool     = false
 var _was_cleared: bool               = false
-var _placed_tiles: Array[Vector2i]   = []
+var _placed_tiles  = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +22,7 @@ func _ready():
 	_exclude_tiles.append(Vector2i(3, 1))
 
 	global.item_selected_buyzone.connect(_on_item_list_item_selected)
+	global.remove_placed_tile.connect(_on_remove_placed_tile)
 
 	# campfire
 	_sprites_array.append({
@@ -46,18 +47,18 @@ func _unhandled_input(event):
 		var clicked_cell: Vector2i = local_to_map(event.position)
 		var clicked_tile: Vector2i = get_cell_atlas_coords(0, clicked_cell)
 
-		if !_is_tile_in_blacklist(clicked_tile) and _has_enough_money():
+		if !_is_tile_in_blacklist(clicked_tile) and _has_enough_money() and !_contains_tile_at(clicked_cell):
 			# buy item
 			_buy_item()
 			# place item
-			var sprite = _sprites_array[_selected_tile]["sprite"]
+			var sprite     = _sprites_array[_selected_tile]["sprite"]
 			var new_sprite = sprite.duplicate()
-			if(sprite != null and _placed_tiles.find(clicked_cell) == -1):
+			if(sprite != null):
 				new_sprite.position = event.position
 				add_child(new_sprite)
-				_placed_tiles.append(clicked_cell)
+				_placed_tiles.append({"position": clicked_cell, "sprite": new_sprite})
+				print(_placed_tiles)
 				_clear_selected_tile()
-
 
 	if event is InputEventMouseMotion:
 		var hovered_cell: Vector2i = local_to_map(event.position)
@@ -100,23 +101,23 @@ func _get_craft_price(item_name: String) -> Dictionary:
 
 
 func _has_enough_money() -> bool:
-	var item_price = _sprites_array[_selected_tile]["price"]
+	var item_price  = _sprites_array[_selected_tile]["price"]
 	var craft_price = _get_craft_price(item_price)
 
 	if craft_price.is_empty():
 		return false
 
 	var tadpole = craft_price["tadpole"]
-	var plank = craft_price["plank"]
+	var plank   = craft_price["plank"]
 
 	var has_tadpole = global.get_stock_amount("tadpole")
-	var has_plank = global.get_stock_amount("plank")
+	var has_plank   = global.get_stock_amount("plank")
 
 	return has_tadpole >= tadpole and has_plank >= plank
 
 
 func _buy_item():
-	var item_price = _sprites_array[_selected_tile]["price"]
+	var item_price  = _sprites_array[_selected_tile]["price"]
 	var craft_price = _get_craft_price(item_price)
 
 	if craft_price.is_empty():
@@ -132,3 +133,21 @@ func _on_ui_buy_ready():
 	if(item_list != null):
 		for sprite in _sprites_array:
 			item_list.add_item(sprite["name"])
+
+func _contains_tile_at(position: Vector2i) -> bool:
+	for tile in _placed_tiles:
+		if tile["position"] == position:
+			return true
+	return false
+
+func _on_remove_placed_tile(event):
+	var clicked_cell: Vector2i = local_to_map(event.position)
+	# remove tile
+	print(_placed_tiles)
+	for tile in _placed_tiles:
+		if tile["position"] == clicked_cell:
+			tile["sprite"].hide() # yeah, it's not removed, but it's hidden and that's enough for now....
+			_placed_tiles.erase(tile)
+			break
+	_clear_selected_tile()
+	_was_cleared = true

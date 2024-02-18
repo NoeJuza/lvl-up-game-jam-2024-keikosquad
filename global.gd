@@ -2,6 +2,7 @@ extends Node
 
 signal stock_amount_changed()
 signal item_selected_buyzone(index)
+signal remove_placed_tile(event)
 signal enemies_killed_updated
 var materials = {"egg":{"name":"egg","texture": ImageTexture.create_from_image(Image.load_from_file("res://assets/ressources/eggs.png"))}, "wood":{"name":"wood","texture": ImageTexture.create_from_image(Image.load_from_file("res://assets/ressources/log.png"))}}
 var components = {"tadpole":{"name":"tadpole","texture": ImageTexture.create_from_image(Image.load_from_file("res://assets/ressources/tadpole.png"))}, "plank":{"name":"plank","texture": ImageTexture.create_from_image(Image.load_from_file("res://assets/ressources/planks.png"))}}
@@ -25,7 +26,6 @@ func add_stock_amount(name, value):
 	stock_dict[name] += value
 	emit_signal("stock_amount_changed")
 
-
 # Remove amount
 func remove_stock_amount(name, value):
 	stock_dict[name] -= value
@@ -38,5 +38,8 @@ func get_stock_amount(name):
 # Getter amount
 func emit_item_selected_buyzone(index):
 	emit_signal("item_selected_buyzone", index)
+
+func emit_remove_placed_tile(event):
+	emit_signal("remove_placed_tile", event)
 
 var wave = 1

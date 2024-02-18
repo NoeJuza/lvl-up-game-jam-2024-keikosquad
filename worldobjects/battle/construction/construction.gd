@@ -51,8 +51,6 @@ func _on_hps_changed():
 		instance.collider_radius = 40
 		get_parent().add_child(instance)
 		instance.position = Vector2(position.x, position.y + 100)
-		queue_free()
-	
 
 
 func _on_static_body_2d_2_input_event(viewport, event, shape_idx):
@@ -60,6 +58,7 @@ func _on_static_body_2d_2_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_released("tear_down"):
 		hps = 0
 		hps_changed.emit()
+		global.emit_remove_placed_tile(event)
 
 
 func _on_life_ticks_timeout():
