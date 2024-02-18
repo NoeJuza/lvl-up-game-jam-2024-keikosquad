@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddx78u5px3vb6"]
+[gd_scene load_steps=22 format=3 uid="uid://5k4icjjnsaql"]
 
 [ext_resource type="Texture2D" uid="uid://b050t70wcy1oy" path="res://assets/tilemap_v1_grayscale.png" id="1_jlnrb"]
 [ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_v0nts"]
@@ -12,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://xui6kf0d6bd0" path="res://assets/ressources/egg.png" id="8_mrc44"]
 [ext_resource type="Texture2D" uid="uid://de78ugwtmldx5" path="res://assets/ws_scrapper.png" id="9_r28st"]
 [ext_resource type="Texture2D" uid="uid://qbe2v27r5h2k" path="res://assets/ws_dropper.jpg" id="10_ygujo"]
+[ext_resource type="PackedScene" uid="uid://cq1kujaqxnlkr" path="res://worldobjects/battle/material/material.tscn" id="13_68re7"]
+[ext_resource type="PackedScene" uid="uid://c44jqg80c8bog" path="res://worldobjects/battle/construction/construction.tscn" id="14_hu6ua"]
+[ext_resource type="PackedScene" uid="uid://cfmwajckabue1" path="res://worldobjects/battle/component/component.tscn" id="15_niigk"]
+[ext_resource type="PackedScene" uid="uid://cvk3v22ilfa13" path="res://worldobjects/workshop/forge/forge.tscn" id="16_lxnpe"]
+[ext_resource type="PackedScene" uid="uid://dtq5h81pthumo" path="res://worldobjects/workshop/dropper/dropper.tscn" id="17_v0upt"]
+[ext_resource type="PackedScene" uid="uid://dsyeiuxyepfwd" path="res://worldobjects/workshop/scrapper/scrapper.tscn" id="18_jiek1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hngpw"]
 texture = ExtResource("1_v0nts")
@@ -174,9 +180,6 @@ terrain_set_0/terrain_1/color = Color(0.658824, 0.780392, 0.32549, 1)
 sources/5 = SubResource("TileSetAtlasSource_hngpw")
 sources/6 = SubResource("TileSetAtlasSource_8ucw4")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqr7o"]
-size = Vector2(379.473, 36)
-
 [node name="Main" type="Node2D"]
 
 [node name="map_tilemap" type="TileMap" parent="."]
@@ -198,6 +201,7 @@ script = ExtResource("3_eprsy")
 position = Vector2(960, 540)
 
 [node name="player_walls" parent="." instance=ExtResource("7_15a31")]
+position = Vector2(22, 0)
 
 [node name="ui_buy" parent="." instance=ExtResource("6_xn2it")]
 z_index = 1
@@ -214,42 +218,62 @@ rotation = -0.471239
 scale = Vector2(0.975, 0.975)
 
 [node name="ground" type="Sprite2D" parent="workshop"]
-position = Vector2(159.372, 162.675)
+position = Vector2(303.637, 222.81)
 rotation = 0.471239
+scale = Vector2(1.28948, 1.28948)
 texture = ExtResource("5_bp1rj")
-
-[node name="wall1" type="StaticBody2D" parent="workshop"]
-position = Vector2(697.734, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="workshop/wall1"]
-shape = SubResource("RectangleShape2D_eqr7o")
-
-[node name="wall2" type="StaticBody2D" parent="workshop"]
-position = Vector2(-36.015, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="workshop/wall2"]
-shape = SubResource("RectangleShape2D_eqr7o")
 
 [node name="machine_forge" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="machine_forge"]
-position = Vector2(1462.06, 840.777)
-scale = Vector2(0.92825, 0.92825)
+position = Vector2(1616.92, 1031.52)
+scale = Vector2(0.685602, 0.746734)
 texture = ExtResource("8_j6pup")
 
 [node name="machine_scrapper" type="Node2D" parent="."]
+position = Vector2(-116, 18)
 
 [node name="Sprite2D" type="Sprite2D" parent="machine_scrapper"]
-position = Vector2(1145.11, 1023.42)
-scale = Vector2(0.92825, 0.92825)
+position = Vector2(1259.74, 1008.74)
+scale = Vector2(0.674646, 0.674646)
 texture = ExtResource("9_r28st")
 
 [node name="machine_dropper" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="machine_dropper"]
-position = Vector2(1478.87, 1015.23)
+position = Vector2(1736, 606)
 rotation = -1.5708
-scale = Vector2(0.92825, 0.92825)
+scale = Vector2(0.588194, 0.547975)
 texture = ExtResource("10_ygujo")
+
+[node name="Material" parent="." instance=ExtResource("13_68re7")]
+position = Vector2(497, 561)
+material_name = "egg"
+texture = ExtResource("8_mrc44")
+
+[node name="Construction" parent="." instance=ExtResource("14_hu6ua")]
+position = Vector2(820, 230)
+
+[node name="Component" parent="." instance=ExtResource("15_niigk")]
+position = Vector2(414, 246)
+
+[node name="forge_tadpole" parent="." instance=ExtResource("16_lxnpe")]
+position = Vector2(1615, 1033)
+accepted_material = "egg"
+output_component = "tadpole"
+
+[node name="forge_plank" parent="." instance=ExtResource("16_lxnpe")]
+position = Vector2(1765, 1031)
+accepted_material = "wood"
+output_component = "plank"
+
+[node name="Dropper" parent="." instance=ExtResource("17_v0upt")]
+position = Vector2(1736, 603)
+
+[node name="Scrapper_tadpole" parent="." instance=ExtResource("18_jiek1")]
+position = Vector2(1147, 1026)
+
+[node name="Scrapper_plank" parent="." instance=ExtResource("18_jiek1")]
+position = Vector2(1293, 1029)
 
 [connection signal="ready" from="ui_buy" to="map_tilemap" method="_on_ui_buy_ready"]
