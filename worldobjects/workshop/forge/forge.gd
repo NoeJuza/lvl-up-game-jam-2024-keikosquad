@@ -6,7 +6,6 @@ class_name Forge
 var is_busy: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Label.text = accepted_material + " -> " + output_component
 	var texture : Texture2D = global.forges[accepted_material].texture
 	print(texture.get_width())
 	var temp_scale_x : float = 0.5

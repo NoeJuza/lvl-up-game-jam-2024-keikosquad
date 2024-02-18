@@ -1,28 +1,55 @@
-[gd_scene load_steps=7 format=3 uid="uid://5k4icjjnsaql"]
+[gd_scene load_steps=10 format=3 uid="uid://5k4icjjnsaql"]
 
 [ext_resource type="PackedScene" uid="uid://cjxv18txfngds" path="res://UI/game/zones/worldmap/worldmap.tscn" id="1_od13e"]
-[ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="5_bp1rj"]
+[ext_resource type="PackedScene" uid="uid://cvk3v22ilfa13" path="res://worldobjects/workshop/forge/forge.tscn" id="3_ejcn2"]
+[ext_resource type="PackedScene" uid="uid://dsyeiuxyepfwd" path="res://worldobjects/workshop/scrapper/scrapper.tscn" id="4_njocu"]
 [ext_resource type="PackedScene" uid="uid://c44jqg80c8bog" path="res://worldobjects/battle/construction/construction.tscn" id="5_fj13v"]
 [ext_resource type="PackedScene" uid="uid://pn5uuemspuex" path="res://ennemies/ennemies.tscn" id="5_stg5d"]
+[ext_resource type="PackedScene" uid="uid://cq1kujaqxnlkr" path="res://worldobjects/battle/material/material.tscn" id="6_a3kqj"]
 [ext_resource type="PackedScene" uid="uid://bt1qyx7baab5v" path="res://UI/game/zones/buy/buy.tscn" id="6_xn2it"]
 [ext_resource type="PackedScene" uid="uid://c61tm2xdybiqv" path="res://UI/game/zones/stock/stock.tscn" id="7_fxv2p"]
+[ext_resource type="PackedScene" uid="uid://dtq5h81pthumo" path="res://worldobjects/workshop/dropper/dropper.tscn" id="8_h0lrk"]
 
 [node name="Main" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_od13e")]
 
+[node name="base_egg_1" parent="World" instance=ExtResource("6_a3kqj")]
+position = Vector2(888, 946)
+material_name = "egg"
+collider_radius = 40.0
+
+[node name="base_wood" parent="World" instance=ExtResource("6_a3kqj")]
+position = Vector2(1052, 744)
+material_name = "wood"
+collider_radius = 40.0
+
+[node name="base_egg_2" parent="World" instance=ExtResource("6_a3kqj")]
+position = Vector2(1025, 511)
+material_name = "egg"
+collider_radius = 40.0
+
+[node name="Forge_tadpole" parent="World" instance=ExtResource("3_ejcn2")]
+position = Vector2(1546, 767)
+accepted_material = "egg"
+output_component = "tadpole"
+
+[node name="Forge_plank" parent="World" instance=ExtResource("3_ejcn2")]
+position = Vector2(1669, 704)
+accepted_material = "wood"
+output_component = "plank"
+
+[node name="scrapper_egg" parent="World" instance=ExtResource("4_njocu")]
+position = Vector2(1693, 1014)
+accepted_component = "tadpole"
+output_material = "egg"
+
+[node name="scrapper_plank" parent="World" instance=ExtResource("4_njocu")]
+position = Vector2(1827, 950)
+accepted_component = "plank"
+output_material = "wood"
+
 [node name="Ennemies" parent="." instance=ExtResource("5_stg5d")]
-
-[node name="workshop" type="Node2D" parent="."]
-position = Vector2(930.596, 1017.84)
-rotation = -0.471239
-scale = Vector2(0.975, 0.975)
-
-[node name="ground" type="Sprite2D" parent="workshop"]
-position = Vector2(303.637, 222.81)
-rotation = 0.471239
-scale = Vector2(1.28948, 1.28948)
-texture = ExtResource("5_bp1rj")
 
 [node name="Buy" parent="." instance=ExtResource("6_xn2it")]
 offset_left = 1570.0
@@ -43,5 +70,10 @@ offset_left = 1571.0
 offset_top = 279.0
 offset_right = 1921.0
 offset_bottom = 459.0
+
+[node name="Dropper" parent="." instance=ExtResource("8_h0lrk")]
+position = Vector2(1854, 475)
+rotation = 0.671952
+scale = Vector2(1.25, 1.25)
 
 [connection signal="ready" from="Buy" to="World" method="_on_ui_buy_ready"]
