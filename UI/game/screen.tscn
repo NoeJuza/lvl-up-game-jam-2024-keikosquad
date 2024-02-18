@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://5k4icjjnsaql"]
+[gd_scene load_steps=16 format=3 uid="uid://5k4icjjnsaql"]
 
 [ext_resource type="PackedScene" uid="uid://cjxv18txfngds" path="res://UI/game/zones/worldmap/worldmap.tscn" id="1_od13e"]
 [ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="5_bp1rj"]
+[ext_resource type="PackedScene" uid="uid://pn5uuemspuex" path="res://ennemies/ennemies.tscn" id="5_stg5d"]
 [ext_resource type="PackedScene" uid="uid://bt1qyx7baab5v" path="res://UI/game/zones/buy/buy.tscn" id="6_xn2it"]
 [ext_resource type="PackedScene" uid="uid://c61tm2xdybiqv" path="res://UI/game/zones/stock/stock.tscn" id="7_fxv2p"]
 [ext_resource type="Texture2D" uid="uid://b3s0hl6ohu7fu" path="res://assets/ws_forge.png" id="8_j6pup"]
@@ -17,7 +18,7 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="WorldMap" parent="." instance=ExtResource("1_od13e")]
+[node name="World" parent="." instance=ExtResource("1_od13e")]
 
 [node name="ui_buy" parent="." instance=ExtResource("6_xn2it")]
 z_index = 1
@@ -27,6 +28,8 @@ texture = ExtResource("8_mrc44")
 
 [node name="ui_stock" parent="." instance=ExtResource("7_fxv2p")]
 z_index = 1
+
+[node name="Ennemies" parent="." instance=ExtResource("5_stg5d")]
 
 [node name="workshop" type="Node2D" parent="."]
 position = Vector2(930.596, 1017.84)
