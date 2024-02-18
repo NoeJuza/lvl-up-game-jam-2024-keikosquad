@@ -21,16 +21,9 @@ anchor_right = -4.84
 offset_left = 1694.0
 offset_right = 2044.0
 offset_bottom = 180.0
+theme_override_font_sizes/font_size = 36
 theme_override_styles/focus = SubResource("StyleBoxFlat_vwotc")
+allow_search = false
 script = ExtResource("1_laoj3")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 187.0
-offset_top = 138.0
-offset_right = 342.0
-offset_bottom = 169.0
-text = "Test to add 5 wood"
-
 [connection signal="ready" from="ItemList" to="ItemList" method="_on_item_list_ready"]
-[connection signal="pressed" from="Button" to="ItemList" method="_on_button_pressed"]

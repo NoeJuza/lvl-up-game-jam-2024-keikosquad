@@ -29,6 +29,11 @@ position = Vector2(1025, 511)
 material_name = "egg"
 collider_radius = 40.0
 
+[node name="base_egg_3" parent="World" instance=ExtResource("6_a3kqj")]
+position = Vector2(992, 996)
+material_name = "egg"
+collider_radius = 40.0
+
 [node name="Forge_tadpole" parent="World" instance=ExtResource("3_ejcn2")]
 position = Vector2(1546, 767)
 accepted_material = "egg"
@@ -50,6 +55,7 @@ accepted_component = "plank"
 output_material = "wood"
 
 [node name="Ennemies" parent="." instance=ExtResource("5_stg5d")]
+position = Vector2(39, 16)
 
 [node name="Buy" parent="." instance=ExtResource("6_xn2it")]
 offset_left = 1570.0
@@ -62,7 +68,7 @@ position = Vector2(726, 163)
 construction_name = "frog on a stool"
 
 [node name="big frog" parent="Buy" instance=ExtResource("5_fj13v")]
-position = Vector2(928, 271)
+position = Vector2(1143, 503)
 construction_name = "big frog"
 
 [node name="Stock" parent="." instance=ExtResource("7_fxv2p")]

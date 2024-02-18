@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc3hew8bcfkpk"]
+
+[ext_resource type="Script" path="res://UI/menus/game-over.gd" id="1_g10ku"]
+
+[node name="Game-over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g10ku")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 615.0
+offset_top = 78.0
+offset_right = 1364.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 128
+text = "GAME OVER"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 336.0
+offset_right = 1040.0
+offset_bottom = 511.0
+theme_override_font_sizes/font_size = 128
+text = "FLIES EATEN:"
+
+[node name="flies_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1062.0
+offset_top = 336.0
+offset_right = 1925.0
+offset_bottom = 511.0
+theme_override_font_sizes/font_size = 128
+text = "n"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 559.0
+offset_right = 704.0
+offset_bottom = 734.0
+theme_override_font_sizes/font_size = 128
+text = "FROGS:"
+
+[node name="frogs_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 560.0
+offset_right = 1957.0
+offset_bottom = 735.0
+theme_override_font_sizes/font_size = 128
+text = "n"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 792.0
+offset_right = 692.0
+offset_bottom = 967.0
+theme_override_font_sizes/font_size = 128
+text = "SCORE:"
+
+[node name="score_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 686.0
+offset_top = 792.0
+offset_right = 1898.0
+offset_bottom = 967.0
+theme_override_font_sizes/font_size = 128
+text = "n"

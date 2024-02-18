@@ -23,6 +23,7 @@ offset_left = 1694.0
 offset_top = 120.0
 offset_right = 2044.0
 offset_bottom = 280.0
+theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxFlat_vwotc")
 script = ExtResource("1_tjfdo")
 

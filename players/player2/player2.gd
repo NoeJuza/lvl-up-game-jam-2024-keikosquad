@@ -66,18 +66,19 @@ func _physics_process(delta):
 			held_item.position = position + get_parent().position + offset
 		
 func _on_interaction_zone_ready():
-	print("interaction zone ready")
+	#print("interaction zone ready")
+	pass
 
 func _on_interaction_zone_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print("body enterred interaction zone")
+	#print("body enterred interaction zone")
 	var parentNode = body.get_parent()
 	if parentNode is WorldObject:
-		print(parentNode.type)
+		#print(parentNode.type)
 		has_interactible_near = true
 		interactible_queue.append(parentNode)
 
 func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
-	print("body has left zone")
+	#print("body has left zone")
 	if not body == null:
 		var parentNode = body.get_parent()
 		if parentNode is WorldObject:
@@ -94,7 +95,7 @@ func _input(ev):
 		var possible_interaction_result = compute_possible_interaction()
 		var possible_interaction = possible_interaction_result[0]
 		var interactible = possible_interaction_result[1]
-		print(possible_interaction)
+		#print(possible_interaction)
 		if not possible_interaction == "none":
 			$interaction_tooltip.show()
 			$interaction_tooltip.play()
@@ -143,7 +144,7 @@ func _input(ev):
 				"store":
 					get_parent().remove_child(held_item)
 					is_holding = false
-					print(held_item.component_name)
+					#print(held_item.component_name)
 					global.add_stock_amount(held_item.component_name, 1)
 					held_item = null
 

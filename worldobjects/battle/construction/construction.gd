@@ -4,11 +4,13 @@ class_name Construction
 @export var construction_name: String
 var hps = 100
 var can_spawn_component = true
-
+var currently_in_range_enemies : Array[Enemy] = []
 signal hps_changed
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.start()
+	global.frogs_placed += 1 
+	$life_ticks.start()
+	$attack_cooldown.start()
 	$ProgressBar.value = hps
 	$StaticBody2D2/AnimatedSprite2D.play(construction_name)
 
@@ -60,6 +62,27 @@ func _on_static_body_2d_2_input_event(viewport, event, shape_idx):
 		hps_changed.emit()
 
 
-func _on_timer_timeout():
+func _on_life_ticks_timeout():
 	hps -= 1
 	hps_changed.emit()
+
+
+func _on_detection_zone_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if body is Enemy:
+		currently_in_range_enemies.append(body)
+		print("added enemy to queue")
+		
+
+func _on_detection_zone_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+	if body != null:
+		if body is Enemy:
+			currently_in_range_enemies.remove_at(currently_in_range_enemies.find(body))
+
+func _on_attack_cooldown_timeout():
+	print("tried to attack")
+	if currently_in_range_enemies.size() > 0:
+		var target = currently_in_range_enemies[0]
+		if target != null:
+			$StaticBody2D2/AnimatedSprite2D.play(construction_name + " attacking")
+			target.get_parent().remove_child(target)
+			global.increment_enemies_killed()
