@@ -12,6 +12,6 @@ script = ExtResource("1_26p8h")
 shape = SubResource("CircleShape2D_05g2x")
 
 [node name="TowerDefenseTile245" type="Sprite2D" parent="."]
-position = Vector2(-1, -1.43051e-06)
-scale = Vector2(0.166946, 0.166946)
+position = Vector2(-1, 2.38419e-07)
+scale = Vector2(0.21099, 0.21099)
 texture = ExtResource("2_nln2c")
