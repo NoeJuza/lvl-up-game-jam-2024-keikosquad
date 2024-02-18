@@ -141,13 +141,13 @@ func _contains_tile_at(position: Vector2i) -> bool:
 	return false
 
 func _on_remove_placed_tile(event):
-	var hovered_cell: Vector2i = local_to_map(event.position)
+	var clicked_cell: Vector2i = local_to_map(event.position)
 	# remove tile
 	print(_placed_tiles)
 	for tile in _placed_tiles:
-		if tile["position"] == hovered_cell:
+		if tile["position"] == clicked_cell:
 			tile["sprite"].hide() # yeah, it's not removed, but it's hidden and that's enough for now....
-			_placed_tiles.erase(_placed_tiles.find(tile))
+			_placed_tiles.erase(tile)
 			break
 	_clear_selected_tile()
 	_was_cleared = true
