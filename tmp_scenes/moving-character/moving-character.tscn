@@ -3,12 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://cy48ooe82huoe" path="res://assets/tilemap/tilemap_v1.png" id="1_2s2o3"]
 [ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_6e4pd"]
 [ext_resource type="Texture2D" uid="uid://c4fpmna8c4at0" path="res://assets/ressources/eggs.png" id="3_ef4mw"]
+
 [ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_t5vbw"]
 [ext_resource type="PackedScene" uid="uid://cq1kujaqxnlkr" path="res://worldobjects/battle/material/material.tscn" id="4_v6oal"]
 [ext_resource type="PackedScene" uid="uid://cfmwajckabue1" path="res://worldobjects/battle/component/component.tscn" id="5_r250r"]
 [ext_resource type="PackedScene" uid="uid://c44jqg80c8bog" path="res://worldobjects/battle/construction/construction.tscn" id="6_d2dyi"]
 [ext_resource type="PackedScene" uid="uid://dtq5h81pthumo" path="res://worldobjects/workshop/dropper/dropper.tscn" id="7_xidyw"]
 [ext_resource type="PackedScene" uid="uid://cvk3v22ilfa13" path="res://worldobjects/workshop/forge/forge.tscn" id="9_8wsdv"]
+
+[ext_resource type="PackedScene" uid="uid://dsyeiuxyepfwd" path="res://worldobjects/workshop/scrapper/scrapper.tscn" id="9_bavhu"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hngpw"]
 texture = ExtResource("1_2s2o3")
@@ -45,25 +49,60 @@ size = Vector2(40, 1080)
 y_sort_enabled = true
 tile_set = SubResource("TileSet_ntcci")
 format = 2
-layer_0/name = "Base"
 layer_0/y_sort_enabled = true
 layer_0/z_index = -1
-layer_0/tile_data = PackedInt32Array(65535, 131077, 0, -65536, 196613, 0, -131071, 196613, 0, -196606, 5, 0, -262141, 5, 0, -327676, 5, 0, -393211, 131077, 0, -458746, 131077, 2, -524281, 5, 0, -458745, 65541, 0, -458744, 5, 0, -393208, 196613, 0, -393207, 5, 0, -327671, 5, 1, -327670, 131077, 0, -262134, 196613, 1, -262133, 131077, 0, -196597, 131077, 0, -196596, 5, 1, -131060, 196613, 0, -131059, 196613, 0, -65523, 5, 1, 14, 5, 1, 65551, 65541, 0, 262156, 5, 1, 327691, 196613, 0, 393226, 131077, 0, 458761, 5, 2, 524296, 131077, 2, 524295, 65541, 0, 458758, 196613, 0, 393221, 5, 0, 327684, 131077, 0, 262147, 65541, 0, 196610, 5, 1, 131073, 196613, 0, 65536, 65541, 0, 131079, 65541, 2, 7, 65541, 2, -65529, 5, 0, -131065, 65541, 0, -196601, 65541, 0, -262137, 65541, 2, -327673, 5, 1, -393209, 131077, 0, -393210, 131077, 2, -327674, 131077, 2, -327675, 65541, 0, -262139, 5, 0, -262140, 131077, 0, -196604, 5, 0, -196605, 5, 0, -131069, 5, 1, -131070, 65541, 0, -65534, 65541, 0, -65535, 5, 0, 1, 131077, 0, 0, 65541, 0, 65537, 5, 1, 65538, 65541, 0, 2, 65541, 0, 3, 131077, 0, -65533, 196613, 0, -65532, 196613, 0, -131068, 5, 0, -131067, 131077, 0, -196603, 65541, 0, -196602, 5, 0, -262138, 65541, 1, -131066, 5, 1, -65530, 5, 0, -65531, 5, 0, 5, 5, 1, 4, 5, 1, 65540, 196613, 0, 65539, 5, 1, 131075, 196613, 0, 131074, 196613, 0, 196611, 131077, 0, 196612, 5, 0, 131076, 131077, 0, 131077, 5, 1, 65541, 5, 0, 6, 131077, 1, 196614, 5, 1, 196613, 5, 0, 262149, 196613, 0, 262148, 5, 1, 327685, 5, 1, 327686, 5, 1, 262150, 5, 1, 262151, 65541, 0, 196615, 5, 0, 196616, 5, 1, 131080, 65541, 2, 65544, 131077, 0, 8, 65541, 2, -65528, 131077, 0, -131064, 5, 0, -196600, 196613, 0, -262136, 65541, 2, -327672, 5, 1, -262135, 65541, 2, -196599, 5, 0, -131063, 196613, 0, -65527, 65541, 0, 9, 65541, 2, 65545, 5, 1, 131081, 196613, 1, 196617, 131077, 2, 262153, 131077, 2, 262152, 131077, 0, 327688, 131077, 0, 327687, 131077, 0, 393223, 196613, 0, 393222, 5, 1, 458759, 196613, 0, 458760, 131077, 1, 393224, 131077, 0, 393225, 131077, 2, 327689, 131077, 2, 327690, 196613, 0, 262154, 131077, 0, 196618, 5, 0, 131082, 131077, 0, 65546, 5, 0, 10, 5, 2, -65526, 131077, 2, -131062, 131077, 2, -196598, 131077, 2, -131061, 131077, 0, -65525, 196613, 0, 11, 5, 0, 65547, 65541, 0, 131083, 196613, 0, 196619, 5, 1, 262155, 65541, 0, 196620, 196613, 0, 131084, 196613, 0, 65548, 131077, 0, 12, 131077, 0, -65524, 65541, 0, 13, 65541, 0, 65549, 65541, 0, 131085, 5, 1, 196621, 65541, 0, 131086, 131077, 0, 65550, 196613, 0, 15, 65541, 0, -65522, 5, 1, 131078, 65541, 1, 65542, 131077, 2, 65543, 131077, 0, 65552, 5, 0, 131087, 5, 0, 196622, 5, 1, 262157, 131077, 0, 589831, 65541, 0, 524294, 196613, 0, 458757, 65541, 0, 393220, 65541, 0, 327683, 5, 1, 262146, 131077, 0, 196609, 131077, 0, 131072, 65541, 0, 131071, 65541, 0, 589830, 196613, 0, 262158, 5, 1, 327693, 131077, 0, -458743, 131077, 0)
-layer_1/name = "Hovering"
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = "Object"
-layer_2/z_index = 1
-layer_2/tile_data = PackedInt32Array()
+layer_0/tile_data = PackedInt32Array(65535, 131077, 0, -65536, 196613, 0, -131071, 196613, 0, -196606, 5, 0, -262141, 5, 0, -327676, 5, 0, -393211, 131077, 0, -458746, 131077, 2, -524281, 5, 0, -458745, 65541, 0, -458744, 5, 0, -393208, 196613, 0, -393207, 5, 0, -327671, 5, 1, -327670, 131077, 0, -262134, 196613, 1, -262133, 131077, 0, -196597, 131077, 0, -196596, 5, 1, -131060, 196613, 0, -131059, 196613, 0, -65523, 5, 1, 14, 5, 1, 65551, 65541, 0, 262156, 5, 1, 327691, 196613, 0, 393226, 131077, 0, 458761, 5, 2, 524296, 131077, 2, 524295, 65541, 0, 458758, 196613, 0, 393221, 5, 0, 327684, 131077, 0, 262147, 65541, 0, 196610, 5, 1, 131073, 196613, 0, 65536, 65541, 0, 131079, 65541, 2, 7, 65541, 2, -65529, 5, 0, -131065, 65541, 0, -196601, 65541, 0, -262137, 65541, 2, -327673, 5, 1, -393209, 131077, 0, -393210, 131077, 2, -327674, 131077, 2, -327675, 65541, 0, -262139, 5, 0, -262140, 131077, 0, -196604, 5, 0, -196605, 5, 0, -131069, 5, 1, -131070, 65541, 0, -65534, 65541, 0, -65535, 5, 0, 1, 131077, 0, 0, 65541, 0, 65537, 5, 1, 65538, 65541, 0, 2, 65541, 0, 3, 131077, 0, -65533, 196613, 0, -65532, 196613, 0, -131068, 5, 0, -131067, 131077, 0, -196603, 65541, 0, -196602, 5, 0, -262138, 65541, 1, -131066, 5, 1, -65530, 5, 0, -65531, 5, 0, 5, 5, 1, 4, 5, 1, 65540, 196613, 0, 65539, 5, 1, 131075, 196613, 0, 131074, 196613, 0, 196611, 131077, 0, 196612, 5, 0, 131076, 131077, 0, 131077, 5, 1, 65541, 5, 0, 6, 131077, 1, 196614, 5, 1, 196613, 5, 0, 262149, 196613, 0, 262148, 5, 1, 327685, 5, 1, 327686, 5, 1, 262150, 5, 1, 262151, 65541, 0, 196615, 5, 0, 196616, 5, 1, 131080, 65541, 2, 65544, 131077, 0, 8, 65541, 2, -65528, 131077, 0, -131064, 5, 0, -196600, 196613, 0, -262136, 65541, 2, -327672, 5, 1, -262135, 65541, 2, -196599, 5, 0, -131063, 196613, 0, -65527, 65541, 0, 9, 65541, 2, 65545, 5, 1, 131081, 196613, 1, 196617, 131077, 2, 262153, 131077, 2, 262152, 131077, 0, 327688, 131077, 0, 327687, 131077, 0, 393223, 196613, 0, 393222, 5, 1, 458759, 196613, 0, 458760, 131077, 1, 393224, 131077, 0, 393225, 131077, 2, 327689, 131077, 2, 327690, 196613, 0, 262154, 131077, 0, 196618, 5, 0, 131082, 131077, 0, 65546, 5, 0, 10, 5, 2, -65526, 131077, 2, -131062, 131077, 2, -196598, 131077, 2, -131061, 131077, 0, -65525, 196613, 0, 11, 5, 0, 65547, 65541, 0, 131083, 196613, 0, 196619, 5, 1, 262155, 65541, 0, 196620, 196613, 0, 131084, 196613, 0, 65548, 131077, 0, 12, 131077, 0, -65524, 65541, 0, 13, 65541, 0, 65549, 65541, 0, 131085, 5, 1, 196621, 65541, 0, 131086, 131077, 0, 65550, 196613, 0, 15, 131077, 0, -65522, 5, 1, 131078, 65541, 1, 65542, 131077, 2, 65543, 131077, 0)
 script = ExtResource("2_6e4pd")
 
 [node name="Player2" parent="TileMap" instance=ExtResource("3_t5vbw")]
 position = Vector2(960, 540)
 
-[node name="ItemList" type="ItemList" parent="."]
-offset_left = 1583.0
-offset_top = 42.0
-offset_right = 1922.0
-offset_bottom = 1079.0
+[node name="egg" parent="TileMap" instance=ExtResource("4_v6oal")]
+position = Vector2(422, 556)
+material_name = "egg"
+collider_radius = 40.0
+
+[node name="tadpole" parent="TileMap" instance=ExtResource("5_r250r")]
+position = Vector2(771, 375)
+component_name = "tadpole"
+collider_radius = 40.0
+
+[node name="plank" parent="TileMap" instance=ExtResource("5_r250r")]
+position = Vector2(987, 373)
+component_name = "plank"
+collider_radius = 40.0
+
+[node name="Construction" parent="TileMap" instance=ExtResource("6_d2dyi")]
+position = Vector2(1351, 551)
+construction_name = "frog on a stool"
+
+[node name="Dropper" parent="TileMap" instance=ExtResource("7_xidyw")]
+position = Vector2(1085, 729)
+
+[node name="Forge_egg" parent="TileMap" instance=ExtResource("9_8wsdv")]
+position = Vector2(673, 730)
+accepted_material = "egg"
+output_component = "tadpole"
+
+[node name="Forge_wood" parent="TileMap" instance=ExtResource("9_8wsdv")]
+position = Vector2(397, 730)
+accepted_material = "wood"
+output_component = "plank"
+
+[node name="wood" parent="TileMap" instance=ExtResource("4_v6oal")]
+position = Vector2(638, 593)
+material_name = "wood"
+collider_radius = 40.0
+
+[node name="Scrapper_tadpole" parent="TileMap" instance=ExtResource("9_bavhu")]
+position = Vector2(383, 1019)
+accepted_component = "tadpole"
+output_material = "egg"
+
+[node name="Scrapper_plank" parent="TileMap" instance=ExtResource("9_bavhu")]
+position = Vector2(688, 1011)
+accepted_component = "plank"
+output_material = "wood"
 
 [node name="Area2D" type="StaticBody2D" parent="."]
 
@@ -112,3 +151,4 @@ position = Vector2(706, 787)
 
 [connection signal="item_selected" from="ItemList" to="TileMap" method="_on_item_list_item_selected"]
 [connection signal="ready" from="ItemList" to="TileMap" method="_on_item_list_ready"]
+
