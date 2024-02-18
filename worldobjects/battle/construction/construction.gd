@@ -5,6 +5,7 @@ class_name Construction
 var hps = 100
 var can_spawn_component = true
 var currently_in_range_enemies : Array[Enemy] = []
+var counter_killed = 0;
 signal hps_changed
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,6 +54,7 @@ func _on_hps_changed():
 		instance.collider_radius = 40
 		get_parent().add_child(instance)
 		instance.position = Vector2(position.x, position.y + 100)
+		get_parent().remove_child(self)
 
 
 func _on_static_body_2d_2_input_event(viewport, event, shape_idx):
@@ -86,4 +88,14 @@ func _on_attack_cooldown_timeout():
 		if target != null:
 			$StaticBody2D2/AnimatedSprite2D.play(construction_name + " attacking")
 			target.get_parent().remove_child(target)
+			counter_killed += 1
+			if counter_killed % 5 == 0:
+				var material = load("res://worldobjects/battle/material/material.tscn")
+				var instance = material.instantiate()
+				var random = RandomNumberGenerator.new()
+				var rdm = random.randi_range(0,1)
+				instance.material_name = "egg" if rdm else "wood"
+				instance.collider_radius = 40
+				get_parent().add_child(instance)
+				instance.position = Vector2(position.x, position.y + 100)
 			global.increment_enemies_killed()
