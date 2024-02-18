@@ -27,15 +27,15 @@ func _ready():
 	_sprites_array.append({
 		"name": "Frog on a stool",
 		"sprite": $"../Buy/frog on a stool",
+		"price": "frog on a stool"
 	})
 
 	# rock
 	_sprites_array.append({
 		"name": "Big frog",
 		"sprite": $"../Buy/big frog",
+		"price": "big frog"
 	})
-
-	print("MAIS C'EST PAS ABORDABLE")
 
 
 func _unhandled_input(event):
@@ -46,16 +46,18 @@ func _unhandled_input(event):
 		var clicked_cell: Vector2i = local_to_map(event.position)
 		var clicked_tile: Vector2i = get_cell_atlas_coords(0, clicked_cell)
 
-		if !_is_tile_in_blacklist(clicked_tile):
+		if !_is_tile_in_blacklist(clicked_tile) and _has_enough_money():
+			# buy item
+			_buy_item()
+			# place item
 			var sprite = _sprites_array[_selected_tile]["sprite"]
-			#duplicate the sprite
-
 			var new_sprite = sprite.duplicate()
 			if(sprite != null and _placed_tiles.find(clicked_cell) == -1):
 				new_sprite.position = event.position
 				add_child(new_sprite)
 				_placed_tiles.append(clicked_cell)
 				_clear_selected_tile()
+
 
 	if event is InputEventMouseMotion:
 		var hovered_cell: Vector2i = local_to_map(event.position)
@@ -88,6 +90,40 @@ func _is_tile_in_blacklist(tile: Vector2i) -> bool:
 func _on_item_list_item_selected(index):
 	_selected_tile = index
 	_item_selected_in_list = true
+
+
+func _get_craft_price(item_name: String) -> Dictionary:
+	for item in global.constructions:
+		if item.name == item_name:
+			return item.costs
+	return {}
+
+
+func _has_enough_money() -> bool:
+	var item_price = _sprites_array[_selected_tile]["price"]
+	var craft_price = _get_craft_price(item_price)
+
+	if craft_price.is_empty():
+		return false
+
+	var tadpole = craft_price["tadpole"]
+	var plank = craft_price["plank"]
+
+	var has_tadpole = global.get_stock_amount("tadpole")
+	var has_plank = global.get_stock_amount("plank")
+
+	return has_tadpole >= tadpole and has_plank >= plank
+
+
+func _buy_item():
+	var item_price = _sprites_array[_selected_tile]["price"]
+	var craft_price = _get_craft_price(item_price)
+
+	if craft_price.is_empty():
+		return
+
+	global.remove_stock_amount("tadpole", craft_price["tadpole"])
+	global.remove_stock_amount("plank", craft_price["plank"])
 
 
 func _on_ui_buy_ready():
