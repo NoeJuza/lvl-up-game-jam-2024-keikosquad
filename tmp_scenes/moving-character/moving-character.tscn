@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmlw2m3kualuh"]
+[gd_scene load_steps=14 format=3 uid="uid://cmlw2m3kualuh"]
 
 [ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_2s2o3"]
 [ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_6e4pd"]
 [ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_t5vbw"]
 [ext_resource type="PackedScene" uid="uid://cq1kujaqxnlkr" path="res://worldobjects/battle/material/material.tscn" id="4_v6oal"]
+[ext_resource type="Texture2D" uid="uid://xui6kf0d6bd0" path="res://assets/ressources/egg.png" id="5_8m1vi"]
 [ext_resource type="PackedScene" uid="uid://cfmwajckabue1" path="res://worldobjects/battle/component/component.tscn" id="5_r250r"]
 [ext_resource type="PackedScene" uid="uid://c44jqg80c8bog" path="res://worldobjects/battle/construction/construction.tscn" id="6_d2dyi"]
+[ext_resource type="PackedScene" uid="uid://dtq5h81pthumo" path="res://worldobjects/workshop/dropper/dropper.tscn" id="7_xidyw"]
+[ext_resource type="PackedScene" uid="uid://cvk3v22ilfa13" path="res://worldobjects/workshop/forge/forge.tscn" id="9_8wsdv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hngpw"]
 texture = ExtResource("1_2s2o3")
@@ -75,9 +78,20 @@ shape = SubResource("RectangleShape2D_2j0f4")
 
 [node name="Material" parent="." instance=ExtResource("4_v6oal")]
 position = Vector2(632, 569)
+material_name = "egg"
+texture = ExtResource("5_8m1vi")
 
 [node name="Component" parent="." instance=ExtResource("5_r250r")]
 position = Vector2(771, 375)
+component_name = "frog"
 
 [node name="Construction" parent="." instance=ExtResource("6_d2dyi")]
 position = Vector2(1351, 551)
+
+[node name="Dropper" parent="." instance=ExtResource("7_xidyw")]
+position = Vector2(1085, 729)
+
+[node name="Forge" parent="." instance=ExtResource("9_8wsdv")]
+position = Vector2(706, 787)
+accepted_material = "egg"
+output_component = "tadpole"

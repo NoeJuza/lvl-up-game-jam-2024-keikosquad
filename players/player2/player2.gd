@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal use_dropper(infos)
 signal use_forge(infos)
 signal use_scrapper(infos)
+signal can_interact_changed
 
 const SPEED = 250
 var is_dropping: bool = false
@@ -10,7 +11,7 @@ var is_holding : bool = false
 var held_item : WorldObject = null
 var has_interactible_near = false
 var interactible_queue : Array[WorldObject] = []
-
+var can_interact = false
 func _convert_to_isometric(cartesian):
 	var screen_pos = Vector2()
 	screen_pos.x = cartesian.x - cartesian.y
@@ -76,6 +77,7 @@ func _on_interaction_zone_body_shape_entered(body_rid, body, body_shape_index, l
 		interactible_queue.append(parentNode)
 		$interaction_tooltip.show()
 		$interaction_tooltip.play()
+		$tooltip_label.show()
 
 func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	print("body has left zone")
@@ -88,6 +90,7 @@ func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, lo
 				has_interactible_near = false
 				$interaction_tooltip.hide()
 				$interaction_tooltip.stop()
+				$tooltip_label.hide()
 
 func _input(ev):
 	if Input.is_action_just_pressed("interact"):
@@ -98,7 +101,9 @@ func _input(ev):
 						held_item.queue_free()
 						interactible.heal()
 						break
-				if interactible.type == "dropper" and held_item.type == "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           "
+				if interactible.type == "dropper" and held_item.type == "component":
+					held_item.queue_free()
+					#global.add_material_amount()
 			is_holding = false
 			held_item = null
 			is_dropping = true
