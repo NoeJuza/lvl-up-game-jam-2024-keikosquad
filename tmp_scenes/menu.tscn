@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dldsc0qhpx5hv"]
+[gd_scene load_steps=5 format=3 uid="uid://bstxcct4fdhgm"]
 
 [ext_resource type="Script" path="res://UI/menus/menu.gd" id="1_np740"]
-[ext_resource type="Texture2D" uid="uid://dbk5q6fbe1fn8" path="res://assets/menu_splash-screen.png" id="2_wgekg"]
+[ext_resource type="Texture2D" path="res://assets/menu_splash-screen.png" id="2_wgekg"]
 [ext_resource type="FontFile" uid="uid://b51fj6dyq8ytd" path="res://assets/fonts/Autour One-Regular.ttf" id="3_0muar"]
 
 [sub_resource type="Theme" id="Theme_7nkiy"]

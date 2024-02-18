@@ -6,6 +6,7 @@ signal use_scrapper(infos)
 signal can_interact_changed
 
 const SPEED = 250
+const SoundManager = preload("res://Sound/sfx/sfxController.gd")
 var is_dropping: bool = false
 var is_holding : bool = false
 var held_item : WorldObject = null
@@ -94,6 +95,7 @@ func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, lo
 
 func _input(ev):
 	if Input.is_action_just_pressed("interact"):
+		SoundManager.playPrend(self)
 		if is_holding :
 			for interactible in interactible_queue:
 				if interactible.type == "construction" and held_item.type == "component":

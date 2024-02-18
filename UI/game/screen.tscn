@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://5k4icjjnsaql"]
+[gd_scene load_steps=23 format=3 uid="uid://ddx78u5px3vb6"]
 
-[ext_resource type="Texture2D" uid="uid://cahipnmqv4o12" path="res://assets/tilemap/tilemap_v1_grayscale.png" id="1_jlnrb"]
-[ext_resource type="Texture2D" uid="uid://catumcmkf5ecy" path="res://assets/tilemap/tilemap_v1.png" id="1_v0nts"]
+[ext_resource type="Texture2D" uid="uid://dbs6y25146srh" path="res://assets/tilemap/tilemap_v1_grayscale.png" id="1_jlnrb"]
+[ext_resource type="Texture2D" uid="uid://dw627dg2h5plf" path="res://assets/tilemap/tilemap_v1.png" id="1_v0nts"]
 [ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_bq8ws"]
 [ext_resource type="Script" path="res://UI/game/zones/buy/buy_zone.gd" id="3_eprsy"]
 [ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="5_bp1rj"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b484gfw36707u" path="res://players/player2/Walls.tscn" id="7_15a31"]
 [ext_resource type="PackedScene" uid="uid://c61tm2xdybiqv" path="res://UI/game/zones/stock/stock.tscn" id="7_fxv2p"]
 [ext_resource type="Texture2D" uid="uid://b3s0hl6ohu7fu" path="res://assets/ws_forge.png" id="8_j6pup"]
-[ext_resource type="Texture2D" uid="uid://dn1hi2lwyk4ef" path="res://assets/ressources/eggs.png" id="8_mrc44"]
+[ext_resource type="Texture2D" uid="uid://cdcmnwlxvtyvw" path="res://assets/ressources/eggs.png" id="8_mrc44"]
 [ext_resource type="Texture2D" uid="uid://de78ugwtmldx5" path="res://assets/ws_scrapper.png" id="9_r28st"]
 [ext_resource type="Texture2D" uid="uid://qbe2v27r5h2k" path="res://assets/ws_dropper.jpg" id="10_ygujo"]
 [ext_resource type="PackedScene" uid="uid://cq1kujaqxnlkr" path="res://worldobjects/battle/material/material.tscn" id="13_68re7"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cvk3v22ilfa13" path="res://worldobjects/workshop/forge/forge.tscn" id="16_lxnpe"]
 [ext_resource type="PackedScene" uid="uid://dtq5h81pthumo" path="res://worldobjects/workshop/dropper/dropper.tscn" id="17_v0upt"]
 [ext_resource type="PackedScene" uid="uid://dsyeiuxyepfwd" path="res://worldobjects/workshop/scrapper/scrapper.tscn" id="18_jiek1"]
+[ext_resource type="AudioStream" uid="uid://cmqc0io8604vo" path="res://Sound/music/The Verdant Grove.ogg" id="19_dyhy7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hngpw"]
 texture = ExtResource("1_v0nts")
@@ -248,8 +249,6 @@ texture = ExtResource("10_ygujo")
 
 [node name="Material" parent="." instance=ExtResource("13_68re7")]
 position = Vector2(497, 561)
-material_name = "egg"
-texture = ExtResource("8_mrc44")
 
 [node name="Construction" parent="." instance=ExtResource("14_hu6ua")]
 position = Vector2(820, 230)
@@ -259,13 +258,9 @@ position = Vector2(414, 246)
 
 [node name="forge_tadpole" parent="." instance=ExtResource("16_lxnpe")]
 position = Vector2(1615, 1033)
-accepted_material = "egg"
-output_component = "tadpole"
 
 [node name="forge_plank" parent="." instance=ExtResource("16_lxnpe")]
 position = Vector2(1765, 1031)
-accepted_material = "wood"
-output_component = "plank"
 
 [node name="Dropper" parent="." instance=ExtResource("17_v0upt")]
 position = Vector2(1736, 603)
@@ -275,5 +270,9 @@ position = Vector2(1147, 1026)
 
 [node name="Scrapper_plank" parent="." instance=ExtResource("18_jiek1")]
 position = Vector2(1293, 1029)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_dyhy7")
+autoplay = true
 
 [connection signal="ready" from="ui_buy" to="map_tilemap" method="_on_ui_buy_ready"]
