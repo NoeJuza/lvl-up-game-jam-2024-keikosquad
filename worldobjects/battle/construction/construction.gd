@@ -53,6 +53,7 @@ func _on_hps_changed():
 		instance.collider_radius = 40
 		get_parent().add_child(instance)
 		instance.position = Vector2(position.x, position.y + 100)
+		get_parent().remove_child(self)
 
 
 func _on_static_body_2d_2_input_event(viewport, event, shape_idx):
