@@ -8,16 +8,14 @@ _data = {
 }
 point_count = 8
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D"]
 position = Vector2(-42, -8)
 curve = SubResource("Curve2D_d0ef0")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(50, 168)
 rotation = 0.00584789
 loop = false
 
-[node name="Ennemy" parent="Path2D/PathFollow2D" instance=ExtResource("1_uwxl0")]
+[node name="Ennemy" parent="PathFollow2D" instance=ExtResource("1_uwxl0")]
 position = Vector2(0, -1)

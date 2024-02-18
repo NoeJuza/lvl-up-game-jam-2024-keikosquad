@@ -1,12 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://pn5uuemspuex"]
+[gd_scene load_steps=3 format=3 uid="uid://pn5uuemspuex"]
 
-[ext_resource type="Script" path="res://ennemies/PathSpawner.gd" id="2_u7tj7"]
+[ext_resource type="PackedScene" uid="uid://cjxv18txfngds" path="res://UI/game/zones/worldmap/worldmap.tscn" id="1_1b85q"]
+[ext_resource type="Script" path="res://ennemies/ennemies_path_2d.gd" id="2_u7tj7"]
 
 [node name="Ennemies" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(794, 482)
-zoom = Vector2(1.575, 1.575)
+[node name="World" parent="." instance=ExtResource("1_1b85q")]
 
 [node name="PathSpawner" type="Node2D" parent="."]
 script = ExtResource("2_u7tj7")

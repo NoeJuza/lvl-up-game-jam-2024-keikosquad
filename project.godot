@@ -29,6 +29,7 @@ window/size/mode=3
 window/size/initial_position_type=0
 window/size/borderless=true
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://assets/cursor.png"
 
 [editor]
 
