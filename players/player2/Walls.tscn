@@ -31,5 +31,5 @@ shape = SubResource("RectangleShape2D_o5il6")
 [node name="Area2D4" type="StaticBody2D" parent="Area"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D4"]
-position = Vector2(1556, 536)
+position = Vector2(1940, 540)
 shape = SubResource("RectangleShape2D_o5il6")

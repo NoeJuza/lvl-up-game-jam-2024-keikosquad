@@ -1,7 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsyeiuxyepfwd"]
+[gd_scene load_steps=3 format=3 uid="uid://dsyeiuxyepfwd"]
 
 [ext_resource type="Script" path="res://worldobjects/workshop/scrapper/scrapper.gd" id="1_30ok0"]
 
-[node name="WorldObject" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tarl"]
+size = Vector2(100, 100)
+
+[node name="Scrapper" type="Node2D"]
 script = ExtResource("1_30ok0")
 type = "scrapper"
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_0tarl")
+debug_color = Color(0.639216, 0.811765, 0.0313726, 0.419608)
