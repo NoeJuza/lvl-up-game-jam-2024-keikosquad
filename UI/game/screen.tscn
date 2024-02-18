@@ -1,13 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://5k4icjjnsaql"]
+[gd_scene load_steps=17 format=3 uid="uid://ddx78u5px3vb6"]
 
+[ext_resource type="Texture2D" uid="uid://b050t70wcy1oy" path="res://assets/tilemap_v1_grayscale.png" id="1_jlnrb"]
 [ext_resource type="Texture2D" uid="uid://d2jftchch8wcx" path="res://assets/tilemap_v1.png" id="1_v0nts"]
-[ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_uwljc"]
 [ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_bq8ws"]
+[ext_resource type="Script" path="res://UI/game/zones/buy/buy_zone.gd" id="3_eprsy"]
 [ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="5_bp1rj"]
 [ext_resource type="PackedScene" uid="uid://bt1qyx7baab5v" path="res://UI/game/zones/buy/buy.tscn" id="6_xn2it"]
 [ext_resource type="PackedScene" uid="uid://b484gfw36707u" path="res://players/player2/Walls.tscn" id="7_15a31"]
 [ext_resource type="PackedScene" uid="uid://c61tm2xdybiqv" path="res://UI/game/zones/stock/stock.tscn" id="7_fxv2p"]
 [ext_resource type="Texture2D" uid="uid://b3s0hl6ohu7fu" path="res://assets/ws_forge.png" id="8_j6pup"]
+[ext_resource type="Texture2D" uid="uid://xui6kf0d6bd0" path="res://assets/ressources/egg.png" id="8_mrc44"]
 [ext_resource type="Texture2D" uid="uid://de78ugwtmldx5" path="res://assets/ws_scrapper.png" id="9_r28st"]
 [ext_resource type="Texture2D" uid="uid://qbe2v27r5h2k" path="res://assets/ws_dropper.jpg" id="10_ygujo"]
 
@@ -143,6 +145,23 @@ texture_region_size = Vector2i(256, 128)
 3:2/0 = 0
 1:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ucw4"]
+texture = ExtResource("1_jlnrb")
+texture_region_size = Vector2i(256, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+1:3/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_ntcci"]
 tile_shape = 1
 tile_layout = 5
@@ -153,6 +172,7 @@ terrain_set_0/terrain_0/color = Color(0.992157, 0.776471, 0.537255, 1)
 terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.658824, 0.780392, 0.32549, 1)
 sources/5 = SubResource("TileSetAtlasSource_hngpw")
+sources/6 = SubResource("TileSetAtlasSource_8ucw4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqr7o"]
 size = Vector2(379.473, 36)
@@ -163,9 +183,16 @@ size = Vector2(379.473, 36)
 y_sort_enabled = true
 tile_set = SubResource("TileSet_ntcci")
 format = 2
+layer_0/name = "Base"
 layer_0/y_sort_enabled = true
+layer_0/z_index = -1
 layer_0/tile_data = PackedInt32Array(65551, 65541, 0, 131086, 5, 1, 196621, 65541, 0, 262156, 65541, 0, 327691, 5, 1, 393226, 5, 0, 458761, 196613, 0, 524296, 5, 1, -524281, 5, 1, -458745, 5, 0, -458744, 65541, 0, -393208, 5, 1, -393207, 5, 1, -327671, 196613, 0, -327670, 131077, 0, -262134, 5, 1, -262133, 131077, 0, -196597, 196613, 0, -196596, 65541, 0, -131060, 5, 1, -131059, 65541, 0, -65523, 65541, 0, -65522, 5, 0, 14, 131077, 0, 15, 131077, 0, -65536, 131077, 0, -131071, 5, 0, -196606, 5, 0, -262141, 131077, 0, -327676, 196613, 0, -393211, 131077, 0, -458746, 131077, 0, 524295, 131077, 0, 524294, 65541, 0, 458758, 5, 0, 458757, 196613, 0, 393221, 65541, 0, 393220, 5, 1, 327684, 5, 0, 327683, 5, 1, 262147, 5, 1, 262146, 5, 0, 196610, 65541, 0, 196609, 5, 0, 131073, 5, 1, 131072, 5, 1, 65536, 5, 1, 131071, 131077, 0, -393210, 196613, 0, -327675, 5, 1, -262140, 5, 0, -196605, 5, 1, -131070, 5, 1, -65535, 131077, 1, -65534, 65541, 2, -131069, 65541, 0, -196604, 5, 1, -262139, 131077, 0, -327674, 5, 1, -393209, 5, 1, -327672, 5, 1, -262137, 131077, 0, -196602, 65541, 2, -131067, 131077, 2, -65532, 5, 0, -65533, 196613, 1, 2, 196613, 0, 65537, 5, 1, -131068, 65541, 0, -196603, 131077, 1, -262138, 5, 1, -327673, 5, 1, -262136, 196613, 0, -196601, 65541, 2, -131066, 5, 0, -65531, 131077, 2, 4, 196613, 0, 65539, 131077, 2, 131074, 196613, 0, 3, 131077, 2, 65538, 65541, 0, -262135, 5, 1, -196600, 196613, 1, -131065, 5, 1, -65530, 5, 1, 5, 131077, 2, 65540, 196613, 0, 131075, 131077, 2, 196611, 65541, 1, 131076, 196613, 0, 65541, 65541, 1, 6, 5, 0, -65529, 5, 0, -196599, 5, 1, -131064, 131077, 2, -196598, 65541, 0, -131063, 196613, 0, -65528, 131077, 2, 7, 196613, 0, 65542, 196613, 1, 131078, 131077, 2, 196613, 131077, 0, 262148, 65541, 1, 131077, 196613, 0, 196612, 196613, 1, 262149, 65541, 2, 65550, 196613, 0, 131085, 131077, 0, 65549, 196613, 0, 13, 131077, 0, 196620, 5, 0, 131084, 196613, 0, 65548, 5, 0, 12, 196613, 0, -65524, 5, 1, 262155, 131077, 0, 196619, 5, 1, 131083, 65541, 2, 65547, 131077, 0, 11, 65541, 0, -65525, 5, 0, -131061, 131077, 0, 327690, 65541, 0, 262154, 5, 0, 196618, 5, 2, 131082, 131077, 1, 65546, 196613, 0, 10, 196613, 0, -65526, 196613, 0, -131062, 196613, 0, 393225, 5, 0, 327689, 5, 0, 262153, 5, 2, 196617, 131077, 1, 131081, 65541, 0, 65545, 196613, 0, 9, 65541, 0, -65527, 65541, 0, 458760, 5, 0, 393224, 131077, 0, 327688, 65541, 0, 262152, 65541, 1, 196616, 131077, 2, 131080, 131077, 2, 65544, 131077, 2, 8, 131077, 2, 458759, 131077, 0, 393223, 131077, 0, 327687, 5, 0, 262151, 131077, 0, 196615, 131077, 0, 131079, 5, 0, 65543, 131077, 0, 393222, 65541, 0, 327686, 5, 0, 262150, 5, 2, 196614, 131077, 2, 327685, 196613, 0, 65535, 65541, 2, 0, 65541, 2, 1, 5, 2)
-script = ExtResource("2_uwljc")
+layer_1/name = "Hover"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Object"
+layer_2/z_index = 1
+layer_2/tile_data = PackedInt32Array()
+script = ExtResource("3_eprsy")
 
 [node name="player2" parent="map_tilemap" instance=ExtResource("3_bq8ws")]
 position = Vector2(960, 540)
@@ -174,6 +201,9 @@ position = Vector2(960, 540)
 
 [node name="ui_buy" parent="." instance=ExtResource("6_xn2it")]
 z_index = 1
+
+[node name="Egg" type="Sprite2D" parent="ui_buy"]
+texture = ExtResource("8_mrc44")
 
 [node name="ui_stock" parent="." instance=ExtResource("7_fxv2p")]
 z_index = 1
@@ -221,3 +251,5 @@ position = Vector2(1478.87, 1015.23)
 rotation = -1.5708
 scale = Vector2(0.92825, 0.92825)
 texture = ExtResource("10_ygujo")
+
+[connection signal="ready" from="ui_buy" to="map_tilemap" method="_on_ui_buy_ready"]
