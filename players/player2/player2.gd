@@ -11,7 +11,7 @@ var is_holding : bool = false
 var held_item : WorldObject = null
 var has_interactible_near = false
 var interactible_queue : Array[WorldObject] = []
-var can_interact = false
+
 func _convert_to_isometric(cartesian):
 	var screen_pos = Vector2()
 	screen_pos.x = cartesian.x - cartesian.y
@@ -66,21 +66,19 @@ func _physics_process(delta):
 			held_item.position = position + get_parent().position + offset
 		
 func _on_interaction_zone_ready():
-	print("interaction zone ready")
+	#print("interaction zone ready")
+	pass
 
 func _on_interaction_zone_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print("body enterred interaction zone")
+	#print("body enterred interaction zone")
 	var parentNode = body.get_parent()
 	if parentNode is WorldObject:
-		print(parentNode.type)
+		#print(parentNode.type)
 		has_interactible_near = true
 		interactible_queue.append(parentNode)
-		$interaction_tooltip.show()
-		$interaction_tooltip.play()
-		$tooltip_label.show()
 
 func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
-	print("body has left zone")
+	#print("body has left zone")
 	if not body == null:
 		var parentNode = body.get_parent()
 		if parentNode is WorldObject:
@@ -88,30 +86,87 @@ func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, lo
 			interactible_queue.remove_at(index)
 			if interactible_queue.size() == 0:
 				has_interactible_near = false
+				$tooltip_label.hide()
+				$interaction_tooltip.hide()
+				$interaction_tooltip.stop()
+
+func _input(ev):
+	if has_interactible_near:
+		var possible_interaction_result = compute_possible_interaction()
+		var possible_interaction = possible_interaction_result[0]
+		var interactible = possible_interaction_result[1]
+		#print(possible_interaction)
+		if not possible_interaction == "none":
+			$interaction_tooltip.show()
+			$interaction_tooltip.play()
+			$tooltip_label.show()
+		match possible_interaction:
+			"none":
 				$interaction_tooltip.hide()
 				$interaction_tooltip.stop()
 				$tooltip_label.hide()
+			"pickup":
+				$tooltip_label.text = "Ramasser"
+			"drop":
+				$tooltip_label.text = "Déposer"
+			"heal":
+				$tooltip_label.text = "Soigner"
+			"craft":
+				$tooltip_label.text = "Fabriquer"
+			"recycle":
+				$tooltip_label.text = "Recycler"
+			"store":
+				$tooltip_label.text = "Envoyer"
+		if Input.is_action_just_pressed("interact"):
+			match possible_interaction:
+				"pickup":
+					is_holding = true
+					held_item = interactible
+				"drop":
+					is_holding = false
+					held_item = null
+					is_dropping = true
+				"heal":
+					get_parent().remove_child(held_item)
+					held_item = null
+					is_holding = false
+					interactible.heal()
+				"craft":
+					get_parent().remove_child(held_item)
+					is_holding = false
+					held_item = null
+					interactible.craft()
+				"recycle":
+					get_parent().remove_child(held_item)
+					is_holding = false
+					held_item = null
+					interactible.craft()
+				"store":
+					get_parent().remove_child(held_item)
+					is_holding = false
+					#print(held_item.component_name)
+					global.add_stock_amount(held_item.component_name, 1)
+					held_item = null
 
-func _input(ev):
-	if Input.is_action_just_pressed("interact"):
+	is_dropping = false
+func compute_possible_interaction():
+	if has_interactible_near:
 		if is_holding :
 			for interactible in interactible_queue:
 				if interactible.type == "construction" and held_item.type == "component":
 					if interactible.hps < 100:
-						held_item.queue_free()
-						interactible.heal()
-						break
-				if interactible.type == "dropper" and held_item.type == "component":
-					held_item.queue_free()
-					#global.add_material_amount()
-			is_holding = false
-			held_item = null
-			is_dropping = true
-		elif has_interactible_near and not is_dropping: # pickup item
+						return ["heal", interactible]
+				if interactible.type == "dropper" and held_item is Component:
+					return ["store", interactible]
+				if interactible is Forge and held_item is RawMaterial:
+					if interactible.accepted_material == held_item.material_name and not interactible.is_busy:
+						return ["craft", interactible]
+				if interactible is Scrapper and held_item is Component:
+					if interactible.accepted_component == held_item.component_name and not interactible.is_busy:
+						return ["recycle", interactible]
+			return ["drop",null]
+		elif not is_dropping: # pickup item
 			for interactible in interactible_queue:
 				if interactible.type == "material" or interactible.type == "component":
-					is_holding = true
-					held_item = interactible
-					break
-		
-	is_dropping = false
+					return ["pickup",interactible]
+	return ["none",null]

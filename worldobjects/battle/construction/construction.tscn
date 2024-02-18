@@ -1,6 +1,161 @@
-[gd_scene load_steps=5 format=3 uid="uid://c44jqg80c8bog"]
+[gd_scene load_steps=31 format=3 uid="uid://c44jqg80c8bog"]
 
 [ext_resource type="Script" path="res://worldobjects/battle/construction/construction.gd" id="1_vyrxq"]
+[ext_resource type="Texture2D" uid="uid://c6d0e075ie07g" path="res://assets/constructions/frog1_front/frog_1_front-facing00.png" id="2_bc0pd"]
+[ext_resource type="Texture2D" uid="uid://iqbtynajans6" path="res://assets/constructions/frog1_back/frog_1_back-facing00.png" id="3_feclm"]
+[ext_resource type="Texture2D" uid="uid://dnelacvxkrar7" path="res://assets/constructions/frog1_front/frog_1_front-facing01.png" id="3_lgdeb"]
+[ext_resource type="Texture2D" uid="uid://bv5u4f4646w5p" path="res://assets/constructions/frog1_front/frog_1_front-facing02.png" id="4_0pvgr"]
+[ext_resource type="Texture2D" uid="uid://brsah0t23fc68" path="res://assets/constructions/frog1_back/frog_1_back-facing01.png" id="4_k8hpj"]
+[ext_resource type="Texture2D" uid="uid://bqogwluh14yyk" path="res://assets/constructions/frog1_front/frog_1_front-facing03.png" id="5_q5un6"]
+[ext_resource type="Texture2D" uid="uid://crm42xsisqbmd" path="res://assets/constructions/frog1_back/frog_1_back-facing02.png" id="5_xdv1g"]
+[ext_resource type="Texture2D" uid="uid://dm2j83c0u3v5l" path="res://assets/constructions/frog1_front/frog_1_front-facing04.png" id="6_henmo"]
+[ext_resource type="Texture2D" uid="uid://v2h0rpubs51" path="res://assets/constructions/frog1_back/frog_1_back-facing03.png" id="6_t2n0v"]
+[ext_resource type="Texture2D" uid="uid://d0rt8is4nll51" path="res://assets/constructions/frog1_front/frog_1_front-facing05.png" id="7_3y7ew"]
+[ext_resource type="Texture2D" uid="uid://7nh23i3bhyfy" path="res://assets/constructions/frog1_back/frog_1_back-facing04.png" id="7_syaux"]
+[ext_resource type="Texture2D" uid="uid://b3k5g72jhruss" path="res://assets/constructions/frog1_back/frog_1_back-facing05.png" id="8_a0mi3"]
+[ext_resource type="Texture2D" uid="uid://dsbwuoo7vcmsi" path="res://assets/constructions/frog2_front/frog_2_front-facing00.png" id="14_dvgur"]
+[ext_resource type="Texture2D" uid="uid://73r1mm4maovs" path="res://assets/constructions/frog2_front/frog_2_front-facing01.png" id="15_dok88"]
+[ext_resource type="Texture2D" uid="uid://bcijvwi8lurvg" path="res://assets/constructions/frog2_front/frog_2_front-facing03.png" id="16_221uq"]
+[ext_resource type="Texture2D" uid="uid://bpyvpt8dky5uu" path="res://assets/constructions/frog2_front/frog_2_front-facing04.png" id="17_ujda0"]
+[ext_resource type="Texture2D" uid="uid://djlx8wtrg48pb" path="res://assets/constructions/frog2_front/frog_2_front-facing05.png" id="18_yoye7"]
+[ext_resource type="Texture2D" uid="uid://c0dftk50ca54m" path="res://assets/constructions/frog2_front/frog_2_front-facing.png" id="19_m6jtj"]
+[ext_resource type="Texture2D" uid="uid://ujf8a0rwt5xv" path="res://assets/constructions/frog2_back/frog_2_back-facing00.png" id="20_0h48e"]
+[ext_resource type="Texture2D" uid="uid://chp10s6hqtger" path="res://assets/constructions/frog2_back/frog_2_back-facing01.png" id="21_j8dyx"]
+[ext_resource type="Texture2D" uid="uid://r34ckgx5r7s0" path="res://assets/constructions/frog2_back/frog_2_back-facing02.png" id="22_vw6am"]
+[ext_resource type="Texture2D" uid="uid://nvf51a2nyasm" path="res://assets/constructions/frog2_back/frog_2_back-facing03.png" id="23_ojbb2"]
+[ext_resource type="Texture2D" uid="uid://dfyf7o4da1qv7" path="res://assets/constructions/frog2_back/frog_2_back-facing04.png" id="24_7y3gl"]
+[ext_resource type="Texture2D" uid="uid://lbvlhu636jws" path="res://assets/constructions/frog2_back/frog_2_back-facing05.png" id="25_rkhui"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hh178"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3y7ew")
+}],
+"loop": true,
+"name": &"big frog",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bc0pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lgdeb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0pvgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q5un6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_henmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3y7ew")
+}],
+"loop": false,
+"name": &"big frog attacking",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_feclm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k8hpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xdv1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t2n0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_syaux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a0mi3")
+}],
+"loop": false,
+"name": &"big frog backattacking",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_dvgur")
+}],
+"loop": true,
+"name": &"frog on a stool",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_dvgur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yoye7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dok88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ujda0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_m6jtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_221uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_m6jtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ujda0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dok88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yoye7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dvgur")
+}],
+"loop": false,
+"name": &"frog on a stool attacking",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_0h48e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j8dyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_vw6am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ojbb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_7y3gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rkhui")
+}],
+"loop": false,
+"name": &"frog on a stool backattacking",
+"speed": 15.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr2dw"]
 radius = 80.0
@@ -11,13 +166,21 @@ bg_color = Color(0.376471, 0.698039, 0, 1)
 [sub_resource type="Theme" id="Theme_by4nw"]
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_38r8l")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2gplh"]
+radius = 303.67
+
 [node name="Construction" type="Node2D"]
 script = ExtResource("1_vyrxq")
 type = "construction"
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+input_pickable = true
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D2"]
+position = Vector2(-50, -110)
+scale = Vector2(0.24707, 0.24707)
+sprite_frames = SubResource("SpriteFrames_hh178")
+animation = &"big frog attacking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(-1, 0)
@@ -25,10 +188,29 @@ shape = SubResource("CircleShape2D_yr2dw")
 debug_color = Color(0.27451, 0.631373, 0, 0.419608)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 1
 offset_left = -130.0
-offset_top = -160.0
+offset_top = -256.0
 offset_right = 130.0
-offset_bottom = -108.0
+offset_bottom = -204.0
 theme = SubResource("Theme_by4nw")
+metadata/_edit_use_anchors_ = true
+
+[node name="life_ticks" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="DetectionZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
+shape = SubResource("CircleShape2D_2gplh")
+one_way_collision_margin = 0.0
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 5.0
 
 [connection signal="hps_changed" from="." to="." method="_on_hps_changed"]
+[connection signal="input_event" from="StaticBody2D2" to="." method="_on_static_body_2d_2_input_event"]
+[connection signal="timeout" from="life_ticks" to="." method="_on_life_ticks_timeout"]
+[connection signal="body_shape_entered" from="DetectionZone" to="." method="_on_detection_zone_body_shape_entered"]
+[connection signal="body_shape_exited" from="DetectionZone" to="." method="_on_detection_zone_body_shape_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

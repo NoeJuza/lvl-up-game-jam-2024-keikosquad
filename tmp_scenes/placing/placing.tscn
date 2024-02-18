@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdfs8u272s503"]
 
-[ext_resource type="Texture2D" uid="uid://dpfmln5mvto2j" path="res://assets/grassland_tiles.png" id="1_akyd7"]
+[ext_resource type="Texture2D" uid="uid://b8cbvtfudmfve" path="res://assets/tilemap/tilemap_v2.png" id="1_akyd7"]
 [ext_resource type="Script" path="res://tmp_scenes/placing/scripts/tile_map.gd" id="2_wqo7d"]
 [ext_resource type="Script" path="res://tmp_scenes/placing/scripts/menu.gd" id="3_p5wbu"]
 

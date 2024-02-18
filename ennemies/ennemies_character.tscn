@@ -1,15 +1,64 @@
-[gd_scene load_steps=4 format=3 uid="uid://gnaljsdsu4ei"]
+[gd_scene load_steps=12 format=3 uid="uid://gnaljsdsu4ei"]
 
 [ext_resource type="Script" path="res://ennemies/ennemies_character.gd" id="1_26p8h"]
-[ext_resource type="Texture2D" uid="uid://dgpgga1n5t2jy" path="res://assets/towerDefense_tile245.png" id="2_gbxhh"]
+[ext_resource type="Texture2D" uid="uid://bsr1b0drms8wf" path="res://assets/ennemies/flying animation/mouche1_front00.png" id="2_ai007"]
+[ext_resource type="Texture2D" uid="uid://rwq1aepo4lc6" path="res://assets/ennemies/flying animation/mouche1_front01.png" id="3_urlux"]
+[ext_resource type="Texture2D" uid="uid://c8fpmf26v8wla" path="res://assets/ennemies/flying animation/mouche1_front02.png" id="4_ti1d8"]
+[ext_resource type="Texture2D" uid="uid://cm8hwyhvd4xxc" path="res://assets/ennemies/flying animation/mouche1_front03.png" id="5_a73ib"]
+[ext_resource type="Texture2D" uid="uid://cqq3upgkrf16n" path="res://assets/ennemies/flying anim 2/mouche2_front00.png" id="6_h6j5f"]
+[ext_resource type="Texture2D" uid="uid://bwct7fdlnmil2" path="res://assets/ennemies/flying anim 2/mouche2_front01.png" id="7_ygeui"]
+[ext_resource type="Texture2D" uid="uid://iliuu2lr40r3" path="res://assets/ennemies/flying anim 2/mouche2_front02.png" id="8_t2v4y"]
+[ext_resource type="Texture2D" uid="uid://c2wg2h65l3yec" path="res://assets/ennemies/flying anim 2/mouche2_front03.png" id="9_thj7i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05g2x"]
 
-[node name="Ennemy" type="CharacterBody2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_uw787"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ai007")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_urlux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ti1d8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a73ib")
+}],
+"loop": true,
+"name": &"black",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_h6j5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ygeui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t2v4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_thj7i")
+}],
+"loop": true,
+"name": &"red",
+"speed": 15.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_26p8h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_05g2x")
 
-[node name="TowerDefenseTile245" type="Sprite2D" parent="."]
-texture = ExtResource("2_gbxhh")
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -10)
+rotation = -0.523599
+scale = Vector2(0.209787, 0.209787)
+sprite_frames = SubResource("SpriteFrames_uw787")
+animation = &"red"

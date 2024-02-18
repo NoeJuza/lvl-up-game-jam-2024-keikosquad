@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtq5h81pthumo"]
+[gd_scene load_steps=4 format=3 uid="uid://dtq5h81pthumo"]
 
 [ext_resource type="Script" path="res://worldobjects/workshop/dropper/dropper.gd" id="1_6gdm8"]
+[ext_resource type="Texture2D" uid="uid://domp2mbtjrlon" path="res://assets/machine/dropper.png" id="2_adwq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4lbh"]
 size = Vector2(100, 100)
@@ -12,6 +13,9 @@ type = "dropper"
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-0.999998, -0.999998)
+scale = Vector2(0.28418, 0.28418)
+texture = ExtResource("2_adwq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("RectangleShape2D_t4lbh")

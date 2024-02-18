@@ -4,20 +4,19 @@
 
 [sub_resource type="Curve2D" id="Curve2D_d0ef0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 168, 0, 0, 0, 0, 392, 170, 0, 0, 0, 0, 401, 808, 0, 0, 0, 0, 893.015, 801.252, 0, 0, 0, 0, 903, 174, 0, 0, 0, 0, 1292, 182, 0, 0, 0, 0, 1296, 805, 0, 0, 0, 0, 1660.36, 801.252)
+"points": PackedVector2Array(0, 0, 0, 0, 20, -12, 0, 0, 0, 0, 251, 127, 0, 0, 0, 0, 377, 57, 0, 0, 0, 0, 626, 184, 0, 0, 0, 0, 131, 442, 0, 0, 0, 0, 237, 502, 0, 0, 0, 0, 142, 568, 0, 0, 0, 0, 382, 700, 0, 0, 0, 0, 754, 496, 0, 0, 0, 0, 640, 444, 0, 0, 0, 0, 1139, 185, 0, 0, 0, 0, 1515, 374, 0, 0, 0, 0, 654, 829, 0, 0, 0, 0, 769, 895, 0, 0, 0, 0, 887, 831, 0, 0, 0, 0, 1021, 895, 0, 0, 0, 0, 1145, 825, 0, 0, 0, 0, 1368, 943)
 }
-point_count = 8
+point_count = 18
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D"]
 position = Vector2(-42, -8)
 curve = SubResource("Curve2D_d0ef0")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(50, 168)
-rotation = 0.00584789
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(20, -12)
+rotation = 0.497261
+rotates = false
 loop = false
 
-[node name="Ennemy" parent="Path2D/PathFollow2D" instance=ExtResource("1_uwxl0")]
+[node name="Ennemy" parent="PathFollow2D" instance=ExtResource("1_uwxl0")]
 position = Vector2(0, -1)

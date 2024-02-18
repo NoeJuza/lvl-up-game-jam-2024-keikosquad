@@ -8,29 +8,22 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="Stock" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1577.0
-offset_right = 1897.0
-offset_bottom = 157.0
+offset_left = -3.0
+offset_top = 4.0
+offset_right = 347.0
+offset_bottom = 184.0
 
 [node name="ItemList" type="ItemList" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -4.84
 anchor_right = -4.84
-offset_left = 1548.8
-offset_top = 269.0
-offset_right = 1891.8
-offset_bottom = 455.0
+offset_left = 1694.0
+offset_right = 2044.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 36
 theme_override_styles/focus = SubResource("StyleBoxFlat_vwotc")
+allow_search = false
 script = ExtResource("1_laoj3")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 157.0
-offset_top = 402.0
-offset_right = 312.0
-offset_bottom = 433.0
-text = "Test to add 5 wood"
-
 [connection signal="ready" from="ItemList" to="ItemList" method="_on_item_list_ready"]
-[connection signal="pressed" from="Button" to="ItemList" method="_on_button_pressed"]
