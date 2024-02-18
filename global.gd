@@ -5,7 +5,11 @@ signal item_selected_buyzone(index)
 var materials = {"egg":{"name":"egg","texture": ImageTexture.create_from_image(Image.load_from_file("res://assets/ressources/eggs.png"))}, "wood":{"name":"wood","texture": ImageTexture.create_from_image(Image.load_from_file("res://assets/ressources/log.png"))}}
 var components = {"tadpole":{"name":"tadpole","texture": ImageTexture.create_from_image(Image.load_from_file("res://assets/ressources/tadpole.png"))}, "plank":{"name":"plank","texture": ImageTexture.create_from_image(Image.load_from_file("res://assets/ressources/planks.png"))}}
 var forges = {"egg":{"texture":ImageTexture.create_from_image(Image.load_from_file("res://assets/machine/machine-egg_to_tadp.png"))}, "wood":{"texture":ImageTexture.create_from_image(Image.load_from_file("res://assets/machine/machine-log_to_planck.png"))}}
-var scrappers = {"tadpole":{"texture":ImageTexture.create_from_image(Image.load_from_file("res://assets/machine/machine-tadp_to_egg.png"))}, "plank":{"texture":ImageTexture.create_from_image(Image.load_from_file("res://assets/machine/machine-planck_to_wood.png"))}}
+var scrappers = {"tadpole":
+					{"texture":ImageTexture.create_from_image(Image.load_from_file("res://assets/machine/machine-tadp_to_egg.png"))},
+				"plank":
+					{"texture":ImageTexture.create_from_image(Image.load_from_file("res://assets/machine/machine-planck_to_wood.png"))}
+				}
 var constructions = [{"name": "big frog", "costs": [2,0]},{"name": "frog on a stool", "costs": [1,1]}]
 
 var stock_dict = {"tadpole": 0, "plank": 0} 

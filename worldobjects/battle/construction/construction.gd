@@ -1,12 +1,13 @@
 extends WorldObject
 class_name Construction
-@export var constuction_name: String
+@export var construction_name: String
 var hps = 100
 var can_spawn_component = true
 signal hps_changed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$ProgressBar.value = hps
+	$StaticBody2D2/AnimatedSprite2D.play(construction_name)
 func heal():
 	hps += 25
 	hps_changed.emit()

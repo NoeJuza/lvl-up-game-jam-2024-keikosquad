@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c44jqg80c8bog"]
+[gd_scene load_steps=30 format=3 uid="uid://c44jqg80c8bog"]
 
 [ext_resource type="Script" path="res://worldobjects/battle/construction/construction.gd" id="1_vyrxq"]
 [ext_resource type="Texture2D" uid="uid://c6d0e075ie07g" path="res://assets/constructions/frog1_front/frog_1_front-facing00.png" id="2_bc0pd"]
@@ -13,6 +13,18 @@
 [ext_resource type="Texture2D" uid="uid://d0rt8is4nll51" path="res://assets/constructions/frog1_front/frog_1_front-facing05.png" id="7_3y7ew"]
 [ext_resource type="Texture2D" uid="uid://7nh23i3bhyfy" path="res://assets/constructions/frog1_back/frog_1_back-facing04.png" id="7_syaux"]
 [ext_resource type="Texture2D" uid="uid://b3k5g72jhruss" path="res://assets/constructions/frog1_back/frog_1_back-facing05.png" id="8_a0mi3"]
+[ext_resource type="Texture2D" uid="uid://dsbwuoo7vcmsi" path="res://assets/constructions/frog2_front/frog_2_front-facing00.png" id="14_dvgur"]
+[ext_resource type="Texture2D" uid="uid://73r1mm4maovs" path="res://assets/constructions/frog2_front/frog_2_front-facing01.png" id="15_dok88"]
+[ext_resource type="Texture2D" uid="uid://bcijvwi8lurvg" path="res://assets/constructions/frog2_front/frog_2_front-facing03.png" id="16_221uq"]
+[ext_resource type="Texture2D" uid="uid://bpyvpt8dky5uu" path="res://assets/constructions/frog2_front/frog_2_front-facing04.png" id="17_ujda0"]
+[ext_resource type="Texture2D" uid="uid://djlx8wtrg48pb" path="res://assets/constructions/frog2_front/frog_2_front-facing05.png" id="18_yoye7"]
+[ext_resource type="Texture2D" uid="uid://c0dftk50ca54m" path="res://assets/constructions/frog2_front/frog_2_front-facing.png" id="19_m6jtj"]
+[ext_resource type="Texture2D" uid="uid://ujf8a0rwt5xv" path="res://assets/constructions/frog2_back/frog_2_back-facing00.png" id="20_0h48e"]
+[ext_resource type="Texture2D" uid="uid://chp10s6hqtger" path="res://assets/constructions/frog2_back/frog_2_back-facing01.png" id="21_j8dyx"]
+[ext_resource type="Texture2D" uid="uid://r34ckgx5r7s0" path="res://assets/constructions/frog2_back/frog_2_back-facing02.png" id="22_vw6am"]
+[ext_resource type="Texture2D" uid="uid://nvf51a2nyasm" path="res://assets/constructions/frog2_back/frog_2_back-facing03.png" id="23_ojbb2"]
+[ext_resource type="Texture2D" uid="uid://dfyf7o4da1qv7" path="res://assets/constructions/frog2_back/frog_2_back-facing04.png" id="24_7y3gl"]
+[ext_resource type="Texture2D" uid="uid://lbvlhu636jws" path="res://assets/constructions/frog2_back/frog_2_back-facing05.png" id="25_rkhui"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hh178"]
 animations = [{
@@ -22,7 +34,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"big frog",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -68,7 +80,66 @@ animations = [{
 }],
 "loop": true,
 "name": &"big frog backattacking",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"empty",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_dvgur")
+}],
+"loop": true,
+"name": &"frog on a stool",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_dvgur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dok88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_221uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ujda0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yoye7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_m6jtj")
+}],
+"loop": true,
+"name": &"frog on a stool attacking",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_0h48e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j8dyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_vw6am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ojbb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_7y3gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rkhui")
+}],
+"loop": true,
+"name": &"frog on a stool backattacking",
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr2dw"]
@@ -87,11 +158,10 @@ type = "construction"
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D2"]
-position = Vector2(-50, -2)
+position = Vector2(-50, -110)
 scale = Vector2(0.24707, 0.24707)
 sprite_frames = SubResource("SpriteFrames_hh178")
-animation = &"big frog"
-frame_progress = 0.488947
+animation = &"frog on a stool"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(-1, 0)
@@ -99,10 +169,11 @@ shape = SubResource("CircleShape2D_yr2dw")
 debug_color = Color(0.27451, 0.631373, 0, 0.419608)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 1
 offset_left = -130.0
-offset_top = -160.0
+offset_top = -256.0
 offset_right = 130.0
-offset_bottom = -108.0
+offset_bottom = -204.0
 theme = SubResource("Theme_by4nw")
 
 [connection signal="hps_changed" from="." to="." method="_on_hps_changed"]

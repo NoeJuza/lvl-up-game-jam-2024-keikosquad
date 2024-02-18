@@ -17,3 +17,8 @@ type = "scrapper"
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_0tarl")
 debug_color = Color(0.639216, 0.811765, 0.0313726, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

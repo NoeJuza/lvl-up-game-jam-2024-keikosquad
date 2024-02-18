@@ -24,4 +24,14 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	pass # Replace with function body.
+	$Timer.stop()
+	create_component_in_front()
+	is_busy = false
+
+func create_component_in_front():
+	var component = load("res://worldobjects/battle/component/component.tscn")
+	var instance = component.instantiate()
+	instance.component_name = output_component
+	instance.collider_radius = 40
+	get_parent().add_child(instance)
+	instance.position = Vector2(position.x, position.y - 100)
