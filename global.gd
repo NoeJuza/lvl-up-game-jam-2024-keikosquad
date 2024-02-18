@@ -21,4 +21,4 @@ func get_stock_amount(name):
 func emit_item_selected_buyzone(index):
 	emit_signal("item_selected_buyzone", index)
 
-
+var wave = 1
