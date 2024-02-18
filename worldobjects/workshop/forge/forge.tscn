@@ -23,3 +23,8 @@ offset_left = -52.0
 offset_top = -33.0
 offset_right = 47.0
 offset_bottom = 33.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

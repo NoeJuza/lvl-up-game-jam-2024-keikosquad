@@ -93,25 +93,49 @@ func _on_interaction_zone_body_shape_exited(body_rid, body, body_shape_index, lo
 				$tooltip_label.hide()
 
 func _input(ev):
-	if Input.is_action_just_pressed("interact"):
+	if has_interactible_near:
+		#print(compute_possible_interaction())
+		if Input.is_action_just_pressed("interact"):
+			if is_holding :
+				if held_item == null:
+					is_holding = false
+					pass
+				for interactible in interactible_queue:
+					if interactible is Construction and held_item is Component:
+							if interactible.hps < 100:
+								held_item.queue_free()
+								interactible.heal()
+								break
+					if interactible.type == "dropper" and held_item is Component:
+						held_item.queue_free()
+						print(held_item.component_name)
+						global.add_stock_amount(held_item.component_name, 1)
+					if interactible is Forge and held_item is RawMaterial:
+						if interactible.accepted_material == held_item.material_name:
+							print("crafting soon")
+				is_holding = false
+				held_item = null
+				is_dropping = true
+			elif not is_dropping: # pickup item
+				for interactible in interactible_queue:
+					if interactible.type == "material" or interactible.type == "component":
+						is_holding = true
+						held_item = interactible
+						break
+		
+	is_dropping = false
+func compute_possible_interaction():
+	if has_interactible_near:
 		if is_holding :
 			for interactible in interactible_queue:
 				if interactible.type == "construction" and held_item.type == "component":
 					if interactible.hps < 100:
-						held_item.queue_free()
-						interactible.heal()
-						break
-				if interactible.type == "dropper" and held_item.type == "component":
-					held_item.queue_free()
-					#global.add_material_amount()
-			is_holding = false
-			held_item = null
-			is_dropping = true
-		elif has_interactible_near and not is_dropping: # pickup item
+						return "heal"
+				if interactible.type == "dropper" and held_item is Component:
+					return "store"
+			return "drop"
+		elif not is_dropping: # pickup item
 			for interactible in interactible_queue:
 				if interactible.type == "material" or interactible.type == "component":
-					is_holding = true
-					held_item = interactible
-					break
-		
-	is_dropping = false
+					return "pickup"
+	return "none"	

@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmlw2m3kualuh"]
+[gd_scene load_steps=13 format=3 uid="uid://cmlw2m3kualuh"]
 
 [ext_resource type="Texture2D" uid="uid://ni2kx7qw6fb6" path="res://assets/tilemap/tilemap_v1.png" id="1_2s2o3"]
 [ext_resource type="Script" path="res://tmp_scenes/moving-character/TileMap.gd" id="2_6e4pd"]
 [ext_resource type="PackedScene" uid="uid://udwbvack0gth" path="res://players/player2/player2.tscn" id="3_t5vbw"]
 [ext_resource type="PackedScene" uid="uid://cq1kujaqxnlkr" path="res://worldobjects/battle/material/material.tscn" id="4_v6oal"]
-[ext_resource type="Texture2D" uid="uid://dacbbc73v3qer" path="res://assets/ressources/eggs.png" id="5_8m1vi"]
 [ext_resource type="PackedScene" uid="uid://cfmwajckabue1" path="res://worldobjects/battle/component/component.tscn" id="5_r250r"]
 [ext_resource type="PackedScene" uid="uid://c44jqg80c8bog" path="res://worldobjects/battle/construction/construction.tscn" id="6_d2dyi"]
 [ext_resource type="PackedScene" uid="uid://dtq5h81pthumo" path="res://worldobjects/workshop/dropper/dropper.tscn" id="7_xidyw"]
@@ -76,14 +75,20 @@ shape = SubResource("RectangleShape2D_2j0f4")
 position = Vector2(1940, 540)
 shape = SubResource("RectangleShape2D_2j0f4")
 
-[node name="Material" parent="." instance=ExtResource("4_v6oal")]
-position = Vector2(632, 569)
+[node name="egg" parent="." instance=ExtResource("4_v6oal")]
+position = Vector2(422, 556)
 material_name = "egg"
-texture = ExtResource("5_8m1vi")
+collider_radius = 40.0
 
-[node name="Component" parent="." instance=ExtResource("5_r250r")]
+[node name="tadpole" parent="." instance=ExtResource("5_r250r")]
 position = Vector2(771, 375)
-component_name = "frog"
+component_name = "tadpole"
+collider_radius = 40.0
+
+[node name="plank" parent="." instance=ExtResource("5_r250r")]
+position = Vector2(987, 373)
+component_name = "plank"
+collider_radius = 40.0
 
 [node name="Construction" parent="." instance=ExtResource("6_d2dyi")]
 position = Vector2(1351, 551)
@@ -95,3 +100,8 @@ position = Vector2(1085, 729)
 position = Vector2(706, 787)
 accepted_material = "egg"
 output_component = "tadpole"
+
+[node name="wood" parent="." instance=ExtResource("4_v6oal")]
+position = Vector2(638, 593)
+material_name = "wood"
+collider_radius = 40.0
