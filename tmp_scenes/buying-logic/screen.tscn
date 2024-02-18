@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqu6w34jolt7o"]
+
+[ext_resource type="PackedScene" uid="uid://cjxv18txfngds" path="res://UI/game/zones/worldmap/worldmap.tscn" id="1_grwt1"]
+[ext_resource type="PackedScene" path="res://ennemies/ennemies.tscn" id="2_1rlo2"]
+[ext_resource type="Texture2D" uid="uid://cnu0rs1ewb3t4" path="res://assets/ws_ground.png" id="3_5agl4"]
+[ext_resource type="PackedScene" uid="uid://bt1qyx7baab5v" path="res://UI/game/zones/buy/buy.tscn" id="4_mgke1"]
+[ext_resource type="PackedScene" uid="uid://c44jqg80c8bog" path="res://worldobjects/battle/construction/construction.tscn" id="5_v6u6u"]
+[ext_resource type="PackedScene" uid="uid://c61tm2xdybiqv" path="res://UI/game/zones/stock/stock.tscn" id="6_b1erv"]
+
+[node name="Main" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_grwt1")]
+
+[node name="Ennemies" parent="." instance=ExtResource("2_1rlo2")]
+
+[node name="workshop" type="Node2D" parent="."]
+position = Vector2(930.596, 1017.84)
+rotation = -0.471239
+scale = Vector2(0.975, 0.975)
+
+[node name="ground" type="Sprite2D" parent="workshop"]
+position = Vector2(303.637, 222.81)
+rotation = 0.471239
+scale = Vector2(1.28948, 1.28948)
+texture = ExtResource("3_5agl4")
+
+[node name="Buy" parent="." instance=ExtResource("4_mgke1")]
+offset_left = 1570.0
+offset_top = -1.0
+offset_right = 1920.0
+offset_bottom = 279.0
+
+[node name="frog on a stool" parent="Buy" instance=ExtResource("5_v6u6u")]
+position = Vector2(726, 163)
+construction_name = "frog on a stool"
+
+[node name="big frog" parent="Buy" instance=ExtResource("5_v6u6u")]
+position = Vector2(928, 271)
+construction_name = "big frog"
+
+[node name="Stock" parent="." instance=ExtResource("6_b1erv")]
+offset_left = 1571.0
+offset_top = 279.0
+offset_right = 1921.0
+offset_bottom = 459.0
+
+[connection signal="ready" from="Buy" to="World" method="_on_ui_buy_ready"]

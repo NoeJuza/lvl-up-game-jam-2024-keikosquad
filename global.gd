@@ -10,12 +10,19 @@ var scrappers = {"tadpole":
 				"plank":
 					{"texture":ImageTexture.create_from_image(Image.load_from_file("res://assets/machine/machine-planck_to_wood.png"))}
 				}
-var constructions = [{"name": "big frog", "costs": {"tadpole":"2", "plank":0}},{"name": "frog on a stool", "costs": {"tadpole":"1", "plank":1}}]
 
-var stock_dict = {"tadpole": 0, "plank": 0} 
+var constructions = [{"name": "big frog", "costs": {"tadpole": 2, "plank": 0}}, {"name": "frog on a stool", "costs": {"tadpole": 1, "plank": 1}}]
+
+var stock_dict = {"tadpole": 10, "plank": 10}
 # Add amount
 func add_stock_amount(name, value):
 	stock_dict[name] += value
+	emit_signal("stock_amount_changed")
+
+
+# Remove amount
+func remove_stock_amount(name, value):
+	stock_dict[name] -= value
 	emit_signal("stock_amount_changed")
 	
 # Getter pour la valeur "amount" dans le tableau stock_array
